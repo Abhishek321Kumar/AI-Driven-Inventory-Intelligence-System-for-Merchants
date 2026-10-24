@@ -1,0 +1,24 @@
+.venv/
+.env
+firebase-debug.log
+firestore-debug.log
+ui-debug.log
+.firebase/
+Mercura-App-main/firebase-data/
+node_modules/
+__pycache__/
+*.pyc
+.DS_Store
+*.bak
+
+# Downloaded reference deck, not part of the app
+com_541f54037359751c_20261005175654.pptx
+
+# IDE agent kits that shipped beside the app
+Mercura-App-main/.cursor/
+Mercura-App-main/.agent/
+Mercura-App-main/.agents/
+Mercura-App-main/.claude/
+Mercura-App-main/.codex/
+Mercura-App-main/.gemini/
+Mercura-App-main/.kiro/
