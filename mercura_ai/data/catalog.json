@@ -1,0 +1,225 @@
+[
+  {
+    "id": "TS-088",
+    "name": "Cotton Crew T-Shirt",
+    "cat": "Essentials",
+    "supplier": "Sri Krishna Mills",
+    "units": 42,
+    "cost": 320,
+    "price": 499,
+    "vel": 2,
+    "sold": 18,
+    "age": 12,
+    "lead": 7,
+    "loss": 0,
+    "channels": {
+      "shopify": 18,
+      "pos": 16,
+      "warehouse": 8
+    },
+    "img": "img/ts.jpg"
+  },
+  {
+    "id": "JN-204",
+    "name": "Denim Straight Jeans",
+    "cat": "Apparel",
+    "supplier": "Indigo Loom",
+    "units": 21,
+    "cost": 740,
+    "price": 1299,
+    "vel": 0.84,
+    "sold": 7,
+    "age": 25,
+    "lead": 10,
+    "loss": 0,
+    "channels": {
+      "shopify": 6,
+      "pos": 10,
+      "warehouse": 5
+    },
+    "img": "img/jeans.jpg"
+  },
+  {
+    "id": "JKT-409",
+    "name": "Winter Heavy Jacket",
+    "cat": "Outerwear",
+    "supplier": "Nordic Wear Ltd.",
+    "units": 47,
+    "cost": 808.5106382978723,
+    "price": 1499,
+    "vel": 0.34,
+    "sold": 2,
+    "age": 63,
+    "lead": 7,
+    "loss": 0,
+    "channels": {
+      "shopify": 0,
+      "pos": 15,
+      "warehouse": 32
+    },
+    "img": "img/jacket.jpg",
+    "moq": 25
+  },
+  {
+    "id": "SH-102",
+    "name": "Sports Running Shoes — AirSprint",
+    "cat": "Footwear",
+    "supplier": "Apex Footwear Ltd.",
+    "units": 14,
+    "cost": 1100,
+    "price": 2499,
+    "vel": 8.4,
+    "sold": 14,
+    "age": 8,
+    "lead": 7,
+    "loss": 18400,
+    "phone": "+91 98201 44821",
+    "email": "contact@apexshoes.in",
+    "channels": {
+      "shopify": 8,
+      "pos": 6,
+      "warehouse": 0
+    },
+    "img": "img/shoes.jpg"
+  },
+  {
+    "id": "SH-312",
+    "name": "Linen Casual Shirt",
+    "cat": "Apparel",
+    "supplier": "Coastal Loom",
+    "units": 35,
+    "cost": 410,
+    "price": 899,
+    "vel": 1.94,
+    "sold": 12,
+    "age": 18,
+    "lead": 8,
+    "loss": 0,
+    "channels": {
+      "shopify": 14,
+      "pos": 12,
+      "warehouse": 9
+    },
+    "img": "img/linen.jpg"
+  },
+  {
+    "id": "ACC-091",
+    "name": "Woolen Scarf & Gloves Set",
+    "cat": "Accessories",
+    "supplier": "Hill Thread Co.",
+    "units": 29,
+    "cost": 210,
+    "price": 449,
+    "vel": 0.5,
+    "sold": 1,
+    "age": 58,
+    "lead": 12,
+    "loss": 0,
+    "channels": {
+      "shopify": 4,
+      "pos": 9,
+      "warehouse": 16
+    },
+    "img": "img/scarf.jpg"
+  },
+  {
+    "id": "TP-505",
+    "name": "Athleisure Track Pants",
+    "cat": "Activewear",
+    "supplier": "Sprint Mills",
+    "units": 8,
+    "cost": 480,
+    "price": 999,
+    "vel": 2.4,
+    "sold": 16,
+    "age": 9,
+    "lead": 5,
+    "loss": 6200,
+    "channels": {
+      "shopify": 3,
+      "pos": 5,
+      "warehouse": 0
+    },
+    "img": "img/pants.jpg"
+  },
+  {
+    "id": "KT-204",
+    "name": "Silk Blend Festive Kurti",
+    "cat": "Ethnic Wear",
+    "supplier": "Banaras House",
+    "units": 5,
+    "cost": 640,
+    "price": 1899,
+    "vel": 3.2,
+    "sold": 18,
+    "age": 11,
+    "lead": 6,
+    "loss": 9800,
+    "channels": {
+      "shopify": 2,
+      "pos": 3,
+      "warehouse": 0
+    },
+    "img": "img/kurti.jpg"
+  },
+  {
+    "id": "SD-881",
+    "name": "Coastal Sandals",
+    "cat": "Footwear",
+    "supplier": "Coastal Steps",
+    "units": 34,
+    "cost": 418,
+    "price": 799,
+    "vel": 0.6,
+    "sold": 8,
+    "age": 44,
+    "lead": 9,
+    "loss": 0,
+    "channels": {
+      "shopify": 10,
+      "pos": 8,
+      "warehouse": 16
+    },
+    "img": "img/sandals.jpg"
+  },
+  {
+    "id": "BW-014",
+    "name": "Beach Wrap",
+    "cat": "Resort",
+    "supplier": "Coastal Steps",
+    "units": 9,
+    "cost": 260,
+    "price": 699,
+    "vel": 2.2,
+    "sold": 12,
+    "age": 16,
+    "lead": 6,
+    "loss": 4200,
+    "channels": {
+      "shopify": 4,
+      "pos": 5,
+      "warehouse": 0
+    },
+    "img": "img/wrap.jpg"
+  },
+  {
+    "id": "CP-330",
+    "name": "Cotton Polo",
+    "cat": "Essentials",
+    "supplier": "Sri Krishna Mills",
+    "units": 10,
+    "cost": 300,
+    "price": 799,
+    "vel": 2.6,
+    "sold": 14,
+    "age": 14,
+    "lead": 5,
+    "loss": 4000,
+    "channels": {
+      "shopify": 4,
+      "pos": 4,
+      "warehouse": 2
+    },
+    "img": "img/polo.jpg"
+  }
+]

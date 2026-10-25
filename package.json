@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Mercura AI - Local Development Server",
   "scripts": {
-    "build:react": "esbuild Mercura-App-main/src/main.jsx --bundle --outfile=Mercura-App-main/react-mount.js --format=iife --jsx=automatic",
+    "build:react": "node -e \"const dir = require('fs').existsSync('mercura_ai/src/main.jsx') ? 'mercura_ai' : 'Mercura-App-main'; require('child_process').execSync(`npx esbuild ${dir}/src/main.jsx --bundle --outfile=${dir}/react-mount.js --format=iife --jsx=automatic`, {stdio: 'inherit'})\"",
     "start": "python server.py"
   },
   "dependencies": {

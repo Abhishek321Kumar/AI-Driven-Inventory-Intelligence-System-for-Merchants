@@ -5,6 +5,7 @@ firestore-debug.log
 ui-debug.log
 .firebase/
 Mercura-App-main/firebase-data/
+mercura_ai/firebase-data/
 node_modules/
 __pycache__/
 *.pyc
@@ -22,3 +23,10 @@ Mercura-App-main/.claude/
 Mercura-App-main/.codex/
 Mercura-App-main/.gemini/
 Mercura-App-main/.kiro/
+mercura_ai/.cursor/
+mercura_ai/.agent/
+mercura_ai/.agents/
+mercura_ai/.claude/
+mercura_ai/.codex/
+mercura_ai/.gemini/
+mercura_ai/.kiro/

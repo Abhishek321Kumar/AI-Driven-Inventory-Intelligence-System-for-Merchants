@@ -18,9 +18,13 @@ mimetypes.add_type("image/jpeg", ".jpg")
 mimetypes.add_type("image/jpeg", ".jpeg")
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-# Check if nested Mercura-App-main directory exists
-NESTED_DIR = os.path.join(BASE_DIR, "Mercura-App-main")
-SERVE_DIR = NESTED_DIR if os.path.isdir(NESTED_DIR) and os.path.exists(os.path.join(NESTED_DIR, "index.html")) else BASE_DIR
+# Check if nested frontend directory exists (mercura_ai or Mercura-App-main)
+SERVE_DIR = BASE_DIR
+for candidate in ["mercura_ai", "Mercura-App-main"]:
+    nested = os.path.join(BASE_DIR, candidate)
+    if os.path.isdir(nested) and os.path.exists(os.path.join(nested, "index.html")):
+        SERVE_DIR = nested
+        break
 
 PORT = 8000
 
