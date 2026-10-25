@@ -4,6 +4,7 @@ firebase-debug.log
 firestore-debug.log
 ui-debug.log
 .firebase/
+Mercura-App-main/
 Mercura-App-main/firebase-data/
 mercura_ai/firebase-data/
 node_modules/
