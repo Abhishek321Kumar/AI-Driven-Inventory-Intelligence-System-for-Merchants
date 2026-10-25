@@ -1,0 +1,475 @@
+<!DOCTYPE html><html lang="en" style=""><svg class="inline-defs-container" aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden"></svg><head><link rel="stylesheet" href="styles.css"><script src="auth.js"></script><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><meta content="web_dashboard" name="shell-type"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"surface-container":"#f0eded","inverse-on-surface":"#f3f0ef","outline-variant":"#e1bfb5","background":"#fcf9f8","tertiary-container":"#b9917a","on-tertiary-container":"#472b1a","primary-fixed":"#ffdbd0","on-primary-fixed-variant":"#832600","primary-container":"#ff6b35","on-secondary-container":"#763100","on-secondary":"#ffffff","on-primary-fixed":"#390c00","on-error-container":"#93000a","surface-container-highest":"#e4e2e1","on-surface":"#1b1c1c","surface-variant":"#e4e2e1","tertiary-fixed":"#ffdbc9","on-error":"#ffffff","on-surface-variant":"#594139","inverse-surface":"#303030","inverse-primary":"#ffb59d","surface-bright":"#fcf9f8","outline":"#8d7168","surface-dim":"#dcd9d9","surface-container-lowest":"#ffffff","on-primary":"#ffffff","tertiary-fixed-dim":"#eabda5","on-secondary-fixed":"#341100","on-background":"#1b1c1c","secondary-fixed":"#ffdbca","on-tertiary-fixed-variant":"#5f402d","primary-fixed-dim":"#ffb59d","surface-container-high":"#eae7e7","secondary-fixed-dim":"#ffb690","tertiary":"#795743","surface-tint":"#ab3500","surface-container-low":"#f6f3f2","on-secondary-fixed-variant":"#783200","error":"#ba1a1a","secondary-container":"#ff9a62","primary":"#ab3500","on-tertiary":"#ffffff","surface":"#fcf9f8","error-container":"#ffdad6","secondary":"#974816","on-tertiary-fixed":"#2d1607","on-primary-container":"#5f1900"},borderRadius:{DEFAULT:"0.25rem",lg:"0.5rem",xl:"0.75rem",full:"9999px"},spacing:{"space-sm":"0.5rem","space-md":"1rem",gutter:"1.5rem",margin:"2rem","space-xl":"2rem","space-2xl":"3rem","space-lg":"1.5rem","space-xs":"0.25rem","margin-mobile":"1rem","gutter-mobile":"1rem"},fontFamily:{"body-md":["Inter"],"headline-md":["Inter"],"headline-sm":["Inter"],"body-sm":["Inter"],"body-lg":["Inter"],"display-lg":["Inter"],"title-md":["Inter"],"mono-metric":["Inter"],"label-sm":["Inter"],"display-lg-mobile":["Inter"],"headline-lg":["Inter"],"label-md":["Inter"]},fontSize:{"body-md":["14px",{lineHeight:"20px",fontWeight:"400"}],"headline-md":["22px",{lineHeight:"28px",letterSpacing:"-0.01em",fontWeight:"600"}],"headline-sm":["18px",{lineHeight:"24px",letterSpacing:"-0.005em",fontWeight:"600"}],"body-sm":["12px",{lineHeight:"16px",fontWeight:"400"}],"body-lg":["16px",{lineHeight:"24px",fontWeight:"400"}],"display-lg":["40px",{lineHeight:"48px",letterSpacing:"-0.02em",fontWeight:"700"}],"title-md":["16px",{lineHeight:"22px",fontWeight:"600"}],"mono-metric":["24px",{lineHeight:"28px",letterSpacing:"-0.02em",fontWeight:"700"}],"label-sm":["11px",{lineHeight:"14px",letterSpacing:"0.04em",fontWeight:"600"}],"display-lg-mobile":["30px",{lineHeight:"38px",letterSpacing:"-0.015em",fontWeight:"700"}],"headline-lg":["28px",{lineHeight:"36px",letterSpacing:"-0.015em",fontWeight:"600"}],"label-md":["13px",{lineHeight:"18px",fontWeight:"500"}]}}}};</script><link rel="stylesheet" href="motion.css"></head><body class="bg-surface font-body-md text-on-surface antialiased selection:bg-primary-fixed selection:text-on-primary-fixed"><aside class="mx-side"><a class="mx-brand" href="dashboard.html"><img alt="Mercura" src="img/logo.png"><div><strong>Mercura AI</strong><span>Driven by AI and controlled by you</span></div></a><nav class="mx-nav"><p class="mx-label">Watch</p><a class="mx-link on" href="dashboard.html"><span class="material-symbols-outlined">dashboard</span><span>Dashboard<small>Today</small></span></a><a class="mx-link" href="inventory.html"><span class="material-symbols-outlined">inventory_2</span><span>Inventory<small>412 products</small></span></a><a class="mx-link" href="sales.html"><span class="material-symbols-outlined">point_of_sale</span><span>Sales<small>This month</small></span></a><p class="mx-label">Decide</p><a class="mx-link" href="alerts.html"><span class="material-symbols-outlined">notification_important</span><span>Stock Alerts<small>Running out</small></span><span class="badge">5</span></a><a class="mx-link" href="insights.html"><span class="material-symbols-outlined">auto_awesome</span><span>AI Insights<small>What to do</small></span></a><a class="mx-link" href="cash.html"><span class="material-symbols-outlined">payments</span><span>Cash Flow<small>Money in stock</small></span></a><p class="mx-label">Store</p><a class="mx-link" href="settings.html"><span class="material-symbols-outlined">settings</span><span>Settings<small>Store profile</small></span></a></nav><a class="mx-merchant" href="settings.html"><img alt="Rajesh Sharma" src="img/rajesh.jpg"><div><b>Rajesh Sharma</b><span>Sharma Apparels</span></div><span class="mx-pro">Pro</span></a></aside><div class="pl-64"><header class="fixed top-0 left-64 right-0 h-16 bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40 px-gutter flex items-center justify-end"><div class="flex items-center gap-space-lg"><div class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-surface-container-low"><span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span><span class="font-body-sm text-body-sm text-on-surface-variant">Live sync: <span class="text-on-surface font-medium">4 mins ago</span></span></div><button class="relative flex items-center justify-center w-10 h-10 rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors"><span class="material-symbols-outlined text-[22px]">notifications</span><span class="absolute top-2 right-2 flex items-center justify-center w-4 h-4 rounded-full bg-primary font-label-sm text-label-sm text-on-primary font-semibold">3</span></button><div class="flex items-center gap-space-sm pl-space-sm"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBlQuTELobfx3Q8WIpw_6d_q7WeLclyBBTbaEkEUCtY97hXOQ2qrx_T11pdEWgeCo_G3ULb0PU-LntghTpkK2-L8HpFskMo5H_U5nA77PviLG-NT5PcslL9u6TnI41aImlscg0ORI8dONiAQbA5FcF5ykCXuIr4sFyFCUn_f6XaE4OGPs6iqE7oO3R7UsDRxAa5bkKXEsCeLDP3G_vMkF4rdDFc6CRiUkA2FKUHZn2_WT5QGHYPlk0"><div class="hidden xl:flex flex-col text-left"><span class="font-label-md text-label-md font-semibold text-on-surface leading-tight">Rajesh S.</span><span class="font-label-sm text-label-sm text-on-surface-variant">Pro Merchant</span></div></div></div></header><main class="w-full pt-16 bg-surface min-h-screen"><div class="flex flex-col w-full px-margin py-space-xl gap-space-2xl">
+<!-- Top Greeting & Scope Bar -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-lg">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center gap-space-sm">
+<span class="font-display-lg text-display-lg text-on-surface tracking-tight">Good morning, Rajesh</span>
+<span class="text-2xl animate-bounce">👋</span>
+</div>
+<p class="font-body-lg text-body-lg text-on-surface-variant">
+        Here's what requires your attention today across <span class="font-title-md text-title-md text-on-surface">412 active SKUs</span>.
+      </p>
+</div>
+<!-- Quick filter chips -->
+<div class="flex flex-wrap items-center gap-2 p-1.5 rounded-2xl bg-surface-container shadow-sm" id="channel-tabs">
+<button class="channel-pill px-4 py-1.5 rounded-xl font-label-md text-label-md font-semibold transition-all bg-surface-container-lowest text-primary shadow-sm" data-tab="all">
+        All Channels
+      </button>
+<button class="channel-pill px-4 py-1.5 rounded-xl font-label-md text-label-md transition-all text-on-surface-variant hover:text-on-surface" data-tab="shopify">
+        Shopify Store
+      </button>
+<button class="channel-pill px-4 py-1.5 rounded-xl font-label-md text-label-md transition-all text-on-surface-variant hover:text-on-surface" data-tab="pos">
+        Offline POS / Retail
+      </button>
+<button class="channel-pill px-4 py-1.5 rounded-xl font-label-md text-label-md transition-all text-on-surface-variant hover:text-on-surface" data-tab="warehouse">
+        Warehouse A
+      </button>
+</div>
+</div>
+<!-- SECTION 1: 1. What is happening in my business? -->
+<section class="flex flex-col gap-space-md">
+<div class="flex items-center gap-space-sm">
+<span class="flex items-center justify-center w-6 h-6 rounded-full bg-primary-container text-on-primary font-label-sm text-label-sm font-bold">1</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface tracking-tight">What is happening in my business?</h2>
+<span class="font-body-sm text-body-sm text-on-surface-variant ml-2">• Performance at a Glance</span>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-space-lg">
+<!-- KPI 1 -->
+<div class="group relative flex flex-col justify-between p-space-lg rounded-2xl bg-surface-container-lowest shadow-sm hover:shadow-md transition-all duration-300">
+<div class="flex items-start justify-between">
+<div class="flex flex-col gap-0.5">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Total Inventory Value</span>
+<span class="font-mono-metric text-mono-metric text-on-surface mt-1">₹4,85,000</span>
+</div>
+<div class="w-10 h-10 rounded-xl bg-primary-fixed flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[22px]">inventory</span>
+</div>
+</div>
+<div class="mt-4 pt-3 flex items-center justify-between bg-surface-container-low px-3 py-2 rounded-xl">
+<span class="font-body-sm text-body-sm text-on-surface-variant">412 SKUs tracked</span>
+<span class="font-label-sm text-label-sm font-semibold text-secondary flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[16px]">arrow_upward</span> +3.4% mo/mo
+          </span>
+</div>
+</div>
+<!-- KPI 2 -->
+<div class="group relative flex flex-col justify-between p-space-lg rounded-2xl bg-surface-container-lowest shadow-sm hover:shadow-md transition-all duration-300">
+<div class="flex items-start justify-between">
+<div class="flex flex-col gap-0.5">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Monthly Sales (Oct)</span>
+<span class="font-mono-metric text-mono-metric text-on-surface mt-1">₹1,85,400</span>
+</div>
+<div class="w-10 h-10 rounded-xl bg-secondary-fixed flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[22px]">trending_up</span>
+</div>
+</div>
+<div class="mt-4 pt-3 flex items-center justify-between bg-surface-container-low px-3 py-2 rounded-xl">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Target ₹1.62L</span>
+<span class="font-label-sm text-label-sm font-semibold text-on-surface bg-surface-container px-2 py-0.5 rounded-full flex items-center gap-0.5 text-emerald-700">
+            ↑ +14.2% beat
+          </span>
+</div>
+</div>
+<!-- KPI 3 -->
+<div class="group relative flex flex-col justify-between p-space-lg rounded-2xl bg-surface-container-lowest shadow-sm hover:shadow-md transition-all duration-300">
+<div class="flex items-start justify-between">
+<div class="flex flex-col gap-0.5">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Estimated Profit</span>
+<span class="font-mono-metric text-mono-metric text-on-surface mt-1">₹56,200</span>
+</div>
+<div class="w-10 h-10 rounded-xl bg-primary-fixed flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[22px]">account_balance_wallet</span>
+</div>
+</div>
+<div class="mt-4 pt-3 flex items-center justify-between bg-surface-container-low px-3 py-2 rounded-xl">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Margin ~30.3%</span>
+<span class="font-label-sm text-label-sm font-semibold text-primary flex items-center gap-0.5">
+            +₹4,800 net gain
+          </span>
+</div>
+</div>
+<!-- KPI 4 -->
+<div class="group relative flex flex-col justify-between p-space-lg rounded-2xl bg-surface-container-lowest shadow-sm hover:shadow-md transition-all duration-300">
+<div class="flex items-start justify-between">
+<div class="flex flex-col gap-0.5">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-error">Capital at Risk</span>
+<span class="font-mono-metric text-mono-metric text-error mt-1">₹72,000</span>
+</div>
+<div class="w-10 h-10 rounded-xl bg-error-container flex items-center justify-center text-error">
+<span class="material-symbols-outlined text-[22px]">crisis_alert</span>
+</div>
+</div>
+<div class="mt-4 pt-3 flex items-center justify-between bg-error-container/40 px-3 py-2 rounded-xl">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Slow &amp; Dead SKUs</span>
+<span class="font-label-sm text-label-sm font-semibold text-error flex items-center gap-0.5">
+            Needs action
+          </span>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 2: Charts & Visual Intelligence -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-stretch">
+<!-- Left Column (7 cols): Sales & Demand Trend -->
+<div class="lg:col-span-7 flex flex-col justify-between p-space-lg rounded-2xl bg-surface-container-lowest shadow-sm">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm mb-4">
+<div>
+<h3 class="font-title-md text-title-md text-on-surface font-semibold">Sales &amp; Demand Trend</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Daily run-rate scaling towards ₹1.85L monthly target</p>
+</div>
+<div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[14px]">bolt</span>
+          Highest velocity: Footwear &amp; Festive
+        </div>
+</div>
+<!-- High polish inline SVG area chart -->
+<div class="relative w-full h-56 flex flex-col justify-end">
+<svg class="w-full h-44 overflow-visible" fill="none" preserveAspectRatio="none" viewBox="0 0 540 160">
+<defs>
+<linearGradient id="peachOrangeFade" x1="0%" x2="0%" y1="0%" y2="100%">
+<stop offset="0%" stop-color="#FF6B35" stop-opacity="0.32"></stop>
+<stop offset="60%" stop-color="#FF9A62" stop-opacity="0.12"></stop>
+<stop offset="100%" stop-color="#FFF8F4" stop-opacity="0.0"></stop>
+</linearGradient>
+<linearGradient id="strokeGradient" x1="0%" x2="100%" y1="0%" y2="0%">
+<stop offset="0%" stop-color="#FF9A62"></stop>
+<stop offset="100%" stop-color="#FF6B35"></stop>
+</linearGradient>
+</defs>
+<!-- Horizontal Reference Gridlines -->
+<line stroke="#f0eded" stroke-dasharray="4 4" stroke-width="1" x1="0" x2="540" y1="20" y2="20"></line>
+<line stroke="#f0eded" stroke-dasharray="4 4" stroke-width="1" x1="0" x2="540" y1="65" y2="65"></line>
+<line stroke="#f0eded" stroke-dasharray="4 4" stroke-width="1" x1="0" x2="540" y1="110" y2="110"></line>
+<line stroke="#eae7e7" stroke-width="1" x1="0" x2="540" y1="150" y2="150"></line>
+<!-- Filled gradient area -->
+<path d="M 0 140 
+                   C 45 135, 75 118, 120 115 
+                   C 170 112, 210 85, 260 80 
+                   C 310 75, 350 95, 400 60 
+                   C 445 30, 490 28, 540 18 
+                   L 540 155 L 0 155 Z" fill="url(#peachOrangeFade)"></path>
+<!-- Main Bezier Line -->
+<path d="M 0 140 
+                   C 45 135, 75 118, 120 115 
+                   C 170 112, 210 85, 260 80 
+                   C 310 75, 350 95, 400 60 
+                   C 445 30, 490 28, 540 18" stroke="url(#strokeGradient)" stroke-linecap="round" stroke-width="3.5"></path>
+<!-- Target Benchmark dashed line -->
+<path d="M 0 100 C 130 90, 300 70, 540 50" stroke="#b9917a" stroke-dasharray="3 3" stroke-width="1.5"></path>
+<!-- Data Points -->
+<circle cx="120" cy="115" fill="#FFFFFF" r="4.5" stroke="#FF6B35" stroke-width="2.5"></circle>
+<circle cx="260" cy="80" fill="#FFFFFF" r="4.5" stroke="#FF6B35" stroke-width="2.5"></circle>
+<circle cx="400" cy="60" fill="#FFFFFF" r="4.5" stroke="#FF6B35" stroke-width="2.5"></circle>
+<circle class="animate-pulse" cx="540" cy="18" fill="#FF6B35" r="6" stroke="#FFFFFF" stroke-width="2"></circle>
+</svg>
+<!-- X-Axis Labels -->
+<div class="flex items-center justify-between pt-3 font-label-sm text-label-sm text-on-surface-variant">
+<span class="">Week 1 (Oct 1-7)</span>
+<span class="">Week 2 (Oct 8-14)</span>
+<span class="">Week 3 (Oct 15-21)</span>
+<span class="">Week 4 (Oct 22-31)</span>
+</div>
+</div>
+<!-- Trend sub-footer -->
+<div class="mt-4 pt-3 flex flex-wrap items-center justify-between gap-2 bg-surface-container-low px-4 py-2.5 rounded-xl">
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-1.5 font-body-sm text-body-sm text-on-surface">
+<span class="w-3 h-0.5 rounded-full bg-primary-container"></span> Actual Revenue
+          </div>
+<div class="flex items-center gap-1.5 font-body-sm text-body-sm text-on-surface-variant">
+<span class="w-3 h-0.5 rounded-full bg-tertiary-container"></span> Baseline Projection
+          </div>
+</div>
+<span class="font-label-sm text-label-sm text-primary font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">verified</span> 94% forecast reliability
+        </span>
+</div>
+</div>
+<!-- Right Column (5 cols): Inventory Health Distribution -->
+<div class="lg:col-span-5 flex flex-col justify-between p-space-lg rounded-2xl bg-surface-container-lowest shadow-sm">
+<div class="flex items-center justify-between mb-2">
+<div>
+<h3 class="font-title-md text-title-md text-on-surface font-semibold">Inventory Health Distribution</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Ratio of current working capital</p>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]">pie_chart</span>
+</div>
+<!-- Donut Chart + Visual Breakdown -->
+<div class="flex flex-col sm:flex-row items-center gap-space-lg my-2">
+<div class="relative w-36 h-36 flex-shrink-0 flex items-center justify-center">
+<svg class="w-full h-full -rotate-90 transform" viewBox="0 0 120 120">
+<!-- Background Ring -->
+<circle cx="60" cy="60" fill="transparent" r="46" stroke="#f0eded" stroke-width="12"></circle>
+<!-- Healthy (62%) -> Circumference = 289 -> 289 * 0.62 = 179.18 -->
+<circle cx="60" cy="60" fill="transparent" r="46" stroke="#22A06B" stroke-dasharray="179.2 289" stroke-dashoffset="0" stroke-linecap="round" stroke-width="12"></circle>
+<!-- Low Stock (18%) -> 289 * 0.18 = 52.02 -->
+<circle cx="60" cy="60" fill="transparent" r="46" stroke="#F5A623" stroke-dasharray="52 289" stroke-dashoffset="-181" stroke-linecap="round" stroke-width="12"></circle>
+<!-- Dead Stock (12%) -> 289 * 0.12 = 34.68 -->
+<circle cx="60" cy="60" fill="transparent" r="46" stroke="#E5484D" stroke-dasharray="34.6 289" stroke-dashoffset="-234" stroke-linecap="round" stroke-width="12"></circle>
+<!-- Stockout (8%) -> 289 * 0.08 = 23.12 -->
+<circle cx="60" cy="60" fill="transparent" r="46" stroke="#ab3500" stroke-dasharray="23 289" stroke-dashoffset="-270" stroke-linecap="round" stroke-width="12"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center text-center pointer-events-none">
+<span class="font-mono-metric text-mono-metric font-bold text-on-surface leading-none">62%</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase mt-0.5">Healthy</span>
+</div>
+</div>
+<!-- Breakdown Progress Bars -->
+<div class="flex-1 w-full flex flex-col gap-2.5">
+<div>
+<div class="flex justify-between items-center text-label-sm font-label-sm mb-1">
+<span class="flex items-center gap-1.5 text-on-surface font-semibold">
+<span class="w-2 h-2 rounded-full bg-[#22A06B]"></span> Healthy
+              </span>
+<span class="text-on-surface-variant font-mono">62% (255 SKUs)</span>
+</div>
+<div class="w-full bg-surface-container h-1.5 rounded-full overflow-hidden">
+<div class="bg-[#22A06B] h-full rounded-full" style="width: 62%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between items-center text-label-sm font-label-sm mb-1">
+<span class="flex items-center gap-1.5 text-on-surface font-semibold">
+<span class="w-2 h-2 rounded-full bg-[#F5A623]"></span> Low Stock
+              </span>
+<span class="text-on-surface-variant font-mono">18% (74 SKUs)</span>
+</div>
+<div class="w-full bg-surface-container h-1.5 rounded-full overflow-hidden">
+<div class="bg-[#F5A623] h-full rounded-full" style="width: 18%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between items-center text-label-sm font-label-sm mb-1">
+<span class="flex items-center gap-1.5 text-on-surface font-semibold">
+<span class="w-2 h-2 rounded-full bg-[#E5484D]"></span> Dead Stock Risk
+              </span>
+<span class="text-on-surface-variant font-mono">12% (49 SKUs)</span>
+</div>
+<div class="w-full bg-surface-container h-1.5 rounded-full overflow-hidden">
+<div class="bg-[#E5484D] h-full rounded-full" style="width: 12%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between items-center text-label-sm font-label-sm mb-1">
+<span class="flex items-center gap-1.5 text-on-surface font-semibold">
+<span class="w-2 h-2 rounded-full bg-primary"></span> Stockout Risk
+              </span>
+<span class="text-on-surface-variant font-mono">8% (34 SKUs)</span>
+</div>
+<div class="w-full bg-surface-container h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary h-full rounded-full" style="width: 8%"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="pt-3 bg-surface-container-low px-3 py-2 rounded-xl flex items-center justify-between">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Recommended focus</span>
+<span class="font-label-sm text-label-sm text-error font-semibold">Clear 49 dead items before Nov</span>
+</div>
+</div>
+</section>
+<!-- SECTION 3: 2. What inventory is becoming risky? & 3. What should I do next? -->
+<section class="flex flex-col gap-space-lg">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-2 p-space-md rounded-2xl bg-surface-container-lowest shadow-sm">
+<div class="flex items-center gap-space-md">
+<div class="w-9 h-9 rounded-xl bg-primary-container text-on-primary flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-[20px]">auto_awesome</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-space-sm">
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Mercura AI Action Hub</h2>
+<span class="px-2.5 py-0.5 rounded-full font-label-sm text-label-sm bg-primary-fixed text-primary font-semibold">
+              3 critical recommendations generated
+            </span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">
+            Answers: "What inventory is becoming risky?" and "What should I do next?"
+          </span>
+</div>
+</div>
+<div class="flex items-center gap-1.5 text-on-surface-variant px-3 py-1.5 rounded-xl bg-surface-container-low font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-[16px] text-primary">info</span>
+<span class="">Mercura advises only. You make all purchasing &amp; supplier decisions.</span>
+</div>
+</div>
+<!-- 3 Structured Cards -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-lg">
+<!-- Card A: Critical / Dead Stock Risk -->
+<div class="relative flex flex-col justify-between p-space-lg rounded-2xl bg-surface-container-lowest shadow-sm hover:shadow-md transition-all duration-300">
+<!-- Top aesthetic accent bar -->
+<div class="absolute top-0 left-6 right-6 h-1 bg-gradient-to-r from-[#E5484D] to-secondary-container rounded-b"></div>
+<div>
+<!-- Status Pill -->
+<div class="flex items-center justify-between mt-1 mb-3">
+<span class="px-2.5 py-1 rounded-full font-label-sm text-label-sm bg-[#FDF0F0] text-[#C93237] font-semibold tracking-wide uppercase flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-[#E5484D]"></span>
+              HIGH RISK • Capital Tied Up
+            </span>
+<span class="font-body-sm text-body-sm text-on-surface-variant font-mono">63d Stagnant</span>
+</div>
+<div class="flex items-start gap-space-sm mb-3">
+<img class="w-12 h-12 rounded-xl object-cover flex-shrink-0" data-alt="Warm wool outdoor winter jackets folded neatly in a retail apparel boutique display with soft lighting and natural cedar hangers" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAsmkMl-86lyc-2Wg0cdalX7cO0JOOucPOxkBrNSljc0V2djBgiNiKYEYGRTnrnOUqDG6_SopbCafviHv2yM5L8mBCXLzuVJ3iatr84nqjW_G5XndMkB_QLEyKsaUDrUltRamRNqzntpR9T6merpbEy7E0gbxbViAdIK-_Lvptn1Aso8sM-oogOv5cO8zwRA31sfPU0GrhbSVE6RPsAkv8SKp7ZF9nnhLP-4zcGprj7yoBwr6oaUrs">
+<div class="flex flex-col min-w-0">
+<h4 class="font-title-md text-title-md text-on-surface font-semibold truncate">Winter Jackets</h4>
+<span class="font-body-sm text-body-sm text-on-surface-variant font-mono">SKU: JKT-409 • Apparel</span>
+</div>
+</div>
+<!-- Problem Insight -->
+<div class="p-3 rounded-xl bg-surface-container-low mb-3">
+<p class="font-body-sm text-body-sm text-on-surface">
+<span class="font-semibold text-error">₹38,000</span> in jacket inventory has remained unsold for 63 consecutive days across North retail points.
+            </p>
+</div>
+<!-- Merchant Action -->
+<div class="flex flex-col gap-1 mb-4">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-primary font-bold">Suggested Merchant Action:</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              Consider a 15% clearance discount, bundle with fast-moving thermals, or re-allocate shelf space before season ends.
+            </p>
+</div>
+</div>
+<div class="flex flex-col sm:flex-row gap-2 pt-2">
+<button class="flex-1 py-2 px-3 rounded-xl font-label-md text-label-md font-semibold bg-surface-container-high text-on-surface hover:bg-surface-container transition-colors flex items-center justify-center gap-1.5">
+<span class="material-symbols-outlined text-[16px]">sell</span>
+            Plan Bundle Discount
+          </button>
+<button class="py-2 px-3 rounded-xl font-label-md text-label-md font-medium text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors">
+            Breakdown
+          </button>
+</div>
+</div>
+<!-- Card B: Stockout Risk Alert -->
+<div class="relative flex flex-col justify-between p-space-lg rounded-2xl bg-surface-container-lowest shadow-sm hover:shadow-md transition-all duration-300">
+<!-- Top aesthetic accent bar -->
+<div class="absolute top-0 left-6 right-6 h-1 bg-gradient-to-r from-primary-container to-secondary-container rounded-b"></div>
+<div>
+<!-- Status Pill -->
+<div class="flex items-center justify-between mt-1 mb-3">
+<span class="px-2.5 py-1 rounded-full font-label-sm text-label-sm bg-[#FEF6E9] text-[#B2720E] font-semibold tracking-wide uppercase flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-[#F5A623]"></span>
+              STOCK ALERT • Stockout in ~5 Days
+            </span>
+<span class="font-body-sm text-body-sm text-on-surface-variant font-mono">8.4/day speed</span>
+</div>
+<div class="flex items-start gap-space-sm mb-3">
+<img class="w-12 h-12 rounded-xl object-cover flex-shrink-0" data-alt="Premium lightweight athletic running shoe sitting on a minimal display pedestal with warm peach studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBW2z-mgdm71Sod3wfQZnsRluBbpLVV_8K7MoLqU40vV729KkBpVUgPZSDbsSiSuP_IM5kbLQ0cOJXoSyNV7nWC6c3o7dzTuNnaE2HPZWEkCyKpHwMDDzeGQ-ER9Isz1YQ42bQwIrtno6OEmPVtUbYCwewXiArnyMncERl_yy5L4eKz4cUZCCjgQ-CpmUAw7zHZ6LECIMcMytmKcn7KDSOEZXlNkGZOEszpxoPdHaDeFrFFuBXWtck">
+<div class="flex flex-col min-w-0">
+<h4 class="font-title-md text-title-md text-on-surface font-semibold truncate">Sports Shoes — AirSprint Pro</h4>
+<span class="font-body-sm text-body-sm text-on-surface-variant font-mono">SKU: SH-102 • Footwear</span>
+</div>
+</div>
+<!-- Problem Insight -->
+<div class="p-3 rounded-xl bg-surface-container-low mb-3">
+<p class="font-body-sm text-body-sm text-on-surface">
+              Sports Shoes may run out within approximately <span class="font-semibold text-primary">5 days</span> based on 8.4 pairs/day velocity.
+            </p>
+</div>
+<!-- Strict Rule Enforced Note -->
+<div class="flex flex-col gap-1 mb-4">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary font-bold">Strict Rule Enforced:</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              Mercura AI does not auto-order. Contact your shoe supplier manually to review lead time (est. 4 days).
+            </p>
+</div>
+</div>
+<div class="flex flex-col sm:flex-row gap-2 pt-2">
+<button class="flex-1 py-2 px-3 rounded-xl font-label-md text-label-md font-semibold bg-primary-container text-on-primary hover:bg-primary transition-colors flex items-center justify-center gap-1.5 shadow-sm" id="copy-supplier-btn">
+<span class="material-symbols-outlined text-[16px]">content_copy</span>
+<span id="copy-btn-text" class="">Copy Supplier Order Note</span>
+</button>
+<button class="py-2 px-3 rounded-xl font-label-md text-label-md font-medium text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors">
+            Velocity
+          </button>
+</div>
+</div>
+<!-- Card C: Stable Health Baseline -->
+<div class="relative flex flex-col justify-between p-space-lg rounded-2xl bg-surface-container-lowest shadow-sm hover:shadow-md transition-all duration-300">
+<!-- Top aesthetic accent bar -->
+<div class="absolute top-0 left-6 right-6 h-1 bg-gradient-to-r from-emerald-400 to-teal-500 rounded-b"></div>
+<div>
+<!-- Status Pill -->
+<div class="flex items-center justify-between mt-1 mb-3">
+<span class="px-2.5 py-1 rounded-full font-label-sm text-label-sm bg-[#E8F6F0] text-[#1D8357] font-semibold tracking-wide uppercase flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-[#22A06B]"></span>
+              HEALTHY • Optimal Turnover
+            </span>
+<span class="font-body-sm text-body-sm text-on-surface-variant font-mono">21-day cycle</span>
+</div>
+<div class="flex items-start gap-space-sm mb-3">
+<img class="w-12 h-12 rounded-xl object-cover flex-shrink-0" data-alt="Stacked organic cotton monochrome t-shirts in warm earth tones on a wooden table in an airy modern clothing boutique" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD0VqbnUlTTaA9HUVOpp8VMqUcPOMAQlhNvd1F2A-0ED3oVQpMLNCJ6K218Q5tDB0JybMZ_N5ljS4iL05dnwqry0p1jIAYElXfYvcPa6icH70l89B8qsSmPJJDy3cdK74S3CM2RCYkmmFstJ6M7IsVbukZDOnv0aOZjl28q4x-2WHLmWZ1ve5Z8mUW3bk3j34xx3ltq5daF-DESJuoHBNoJjrYvTKydSAXTbZOoUTF96Y0DMP1UF0g">
+<div class="flex flex-col min-w-0">
+<h4 class="font-title-md text-title-md text-on-surface font-semibold truncate">Cotton Crew T-Shirts</h4>
+<span class="font-body-sm text-body-sm text-on-surface-variant font-mono">SKU: TS-088 • Essentials</span>
+</div>
+</div>
+<!-- Problem Insight -->
+<div class="p-3 rounded-xl bg-surface-container-low mb-3">
+<p class="font-body-sm text-body-sm text-on-surface">
+              T-shirt inventory and sales levels are currently stable. Stock velocity perfectly matches the target 21-day retail cycle.
+            </p>
+</div>
+<!-- Merchant Action -->
+<div class="flex flex-col gap-1 mb-4">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-emerald-800 font-bold">Suggested Guidance:</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              No immediate intervention needed. Maintain current reorder cadence next month with standard batch volumes.
+            </p>
+</div>
+</div>
+<div class="pt-2">
+<a class="w-full py-2 px-3 rounded-xl font-label-md text-label-md font-semibold text-primary hover:bg-surface-container-low transition-colors flex items-center justify-center gap-1.5" href="#">
+<span class="">View Inventory Balance</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+<!-- Bottom contextual metadata footer -->
+<footer class="flex flex-col sm:flex-row items-center justify-between gap-space-sm pt-space-md text-on-surface-variant">
+<div class="flex items-center gap-2 font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-[18px] text-tertiary">currency_rupee</span>
+<span class="">All monetary values in INR (₹). Projections incorporate POS &amp; online sales velocity.</span>
+</div>
+<div class="flex items-center gap-4 font-body-sm text-body-sm">
+<span class="flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+        AI sync scheduled in 1h 42m
+      </span>
+<span class="hover:text-on-surface cursor-pointer underline">Download Snapshot</span>
+</div>
+</footer>
+</div>
+<script>
+  // Simple micro-interactions for channel filter pills
+  const channelPills = document.querySelectorAll('.channel-pill');
+  channelPills.forEach(pill => {
+    pill.addEventListener('click', () => {
+      channelPills.forEach(p => {
+        p.classList.remove('bg-surface-container-lowest', 'text-primary', 'font-semibold', 'shadow-sm');
+        p.classList.add('text-on-surface-variant');
+      });
+      pill.classList.remove('text-on-surface-variant');
+      pill.classList.add('bg-surface-container-lowest', 'text-primary', 'font-semibold', 'shadow-sm');
+    });
+  });
+
+  // Copy Supplier Order Note interaction
+  const copyBtn = document.getElementById('copy-supplier-btn');
+  const copyText = document.getElementById('copy-btn-text');
+  if (copyBtn && copyText) {
+    copyBtn.addEventListener('click', () => {
+      const orderDraft = "Supplier Order Inquiry: Sharma Apparels requesting quote & restock for 45 units of Sports Shoes — AirSprint Pro (SKU: SH-102). Need dispatch within 4 days.";
+      navigator.clipboard?.writeText(orderDraft).catch(() => {});
+      copyText.innerText = 'Copied to Clipboard!';
+      setTimeout(() => {
+        copyText.innerText = 'Copy Supplier Order Note';
+      }, 2200);
+    });
+  }
+</script>
+<div id="mercura-hybrid" class="px-margin pb-space-xl"></div>
+</main></div>
+<script src="engine.js"></script><script src="hybrid_engine.js"></script><script src="nav.js"></script></body></html>

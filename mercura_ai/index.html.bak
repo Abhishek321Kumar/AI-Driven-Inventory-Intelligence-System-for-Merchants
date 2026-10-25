@@ -1,0 +1,1680 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mercura AI — 4K Editorial FinTech & Working Capital Intelligence</title>
+  
+  <!-- Google Fonts: Syne (Display), Plus Jakarta Sans (UI), JetBrains Mono (Financial Telemetry) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+  
+  <!-- Material Symbols Outlined -->
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            alabaster: '#F4F3EF',
+            obsidian: '#0D0D0D',
+            stucco: '#9E9A90',
+            acid: {
+              DEFAULT: '#E8FF00',
+              hover: '#D4FF00',
+              glow: 'rgba(232, 255, 0, 0.25)'
+            },
+            crimson: {
+              DEFAULT: '#FF331F',
+              glow: 'rgba(255, 51, 31, 0.3)'
+            },
+            emerald: '#00C853',
+            amber: '#FF9900'
+          },
+          fontFamily: {
+            display: ['Syne', 'sans-serif'],
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace']
+          }
+        }
+      }
+    };
+  </script>
+  
+  <!-- Core Design Tokens & Motion Styling -->
+  <link rel="stylesheet" href="motion.css">
+  <link rel="stylesheet" href="styles.css">
+  
+  <!-- Libraries: GSAP, ScrollTrigger, Lenis, Canvas Confetti -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+</head>
+
+<body class="bg-alabaster text-obsidian antialiased selection:bg-acid selection:text-obsidian relative min-h-screen">
+
+  <!-- 4K SVG Fractal Noise & Paper Grain Tactile Overlay -->
+  <svg class="tactile-grain" aria-hidden="true">
+    <filter id="noise4k">
+      <feTurbulence type="fractalNoise" baseFrequency="0.75" numOctaves="3" stitchTiles="stitch" />
+      <feColorMatrix type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 1 0" />
+    </filter>
+    <rect width="100%" height="100%" filter="url(#noise4k)" />
+  </svg>
+
+  <!-- Interactive Audio-Haptic Feedback Sound Synthesizer -->
+  <script>
+    const HapticAudio = (function() {
+      let ctx = null;
+      let muted = false;
+      function getContext() {
+        if (!ctx && (window.AudioContext || window.webkitAudioContext)) {
+          ctx = new (window.AudioContext || window.webkitAudioContext)();
+        }
+        if (ctx && ctx.state === 'suspended') ctx.resume();
+        return ctx;
+      }
+      return {
+        toggleMute: function() {
+          muted = !muted;
+          return muted;
+        },
+        isMuted: function() { return muted; },
+        click: function(freq = 1200, type = 'sine') {
+          if (muted) return;
+          try {
+            const ac = getContext();
+            if (!ac) return;
+            const osc = ac.createOscillator();
+            const gain = ac.createGain();
+            osc.type = type;
+            osc.frequency.setValueAtTime(freq, ac.currentTime);
+            osc.frequency.exponentialRampToValueAtTime(300, ac.currentTime + 0.04);
+            gain.gain.setValueAtTime(0.08, ac.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.001, ac.currentTime + 0.04);
+            osc.connect(gain);
+            gain.connect(ac.destination);
+            osc.start();
+            osc.stop(ac.currentTime + 0.04);
+          } catch(e) {}
+        },
+        success: function() {
+          if (muted) return;
+          try {
+            const ac = getContext();
+            if (!ac) return;
+            [523.25, 659.25, 783.99, 1046.50].forEach((freq, i) => {
+              const osc = ac.createOscillator();
+              const gain = ac.createGain();
+              osc.type = 'triangle';
+              osc.frequency.setValueAtTime(freq, ac.currentTime + i * 0.06);
+              gain.gain.setValueAtTime(0.06, ac.currentTime + i * 0.06);
+              gain.gain.exponentialRampToValueAtTime(0.001, ac.currentTime + i * 0.06 + 0.12);
+              osc.connect(gain);
+              gain.connect(ac.destination);
+              osc.start(ac.currentTime + i * 0.06);
+              osc.stop(ac.currentTime + i * 0.06 + 0.12);
+            });
+          } catch(e) {}
+        }
+      };
+    })();
+  </script>
+
+  <!-- =========================================================================
+       FLOATING GLASS HUD BAR (STICKY NAV)
+       ========================================================================= -->
+  <header class="fixed top-4 left-4 right-4 z-50 max-w-7xl mx-auto flex items-center justify-between px-5 py-3 rounded-2xl bg-obsidian/85 backdrop-blur-2xl border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.4)] text-white transition-all duration-300">
+    <!-- Brand Mark -->
+    <a href="#scale-hero" class="flex items-center gap-3 group">
+      <div class="relative w-8 h-8 rounded-xl bg-acid flex items-center justify-center text-obsidian font-display font-extrabold text-base shadow-[0_0_15px_rgba(232,255,0,0.5)] transition-transform duration-300 group-hover:scale-105">
+        M
+      </div>
+      <div>
+        <div class="flex items-center gap-2">
+          <span class="font-display font-bold text-sm tracking-tight text-white group-hover:text-acid transition-colors">MERCURA AI</span>
+          <span class="text-[9px] font-mono uppercase px-1.5 py-0.5 rounded bg-acid/15 text-acid border border-acid/30">v2.0 4K</span>
+        </div>
+        <p class="text-[10px] text-stucco tracking-wider uppercase font-medium">Working Capital Intelligence</p>
+      </div>
+    </a>
+
+    <!-- Live Telemetry Ticker Pill -->
+    <div class="hidden lg:flex items-center gap-2.5 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-mono">
+      <span class="pulse-beacon-acid"></span>
+      <span class="text-white/80">LIVE TELEMETRY:</span>
+      <span class="text-acid font-bold" id="hud-total-val">₹4,85,000</span>
+      <span class="text-white/40">//</span>
+      <span class="text-crimson font-bold" id="hud-risk-val">₹72,000 AT RISK</span>
+    </div>
+
+    <!-- Navigation Anchors -->
+    <nav class="hidden md:flex items-center gap-6 text-xs font-medium tracking-wide">
+      <a href="#scale-hero" class="text-stucco hover:text-acid transition-colors">01 // SCALE HERO</a>
+      <a href="#ghost-numerals" class="text-stucco hover:text-acid transition-colors">02 // 82% RISK</a>
+      <a href="#glass-cards" class="text-stucco hover:text-acid transition-colors">03 // GLASS CARDS</a>
+      <a href="#live-terminal" class="text-acid font-semibold hover:text-white transition-colors flex items-center gap-1">
+        04 // LIVE TERMINAL
+        <span class="material-symbols-outlined text-sm">arrow_forward</span>
+      </a>
+    </nav>
+
+    <!-- Utility & CTA -->
+    <div class="flex items-center gap-3">
+      <!-- Audio Haptic Toggle -->
+      <button id="sound-toggle-btn" class="p-2 rounded-xl bg-white/5 hover:bg-white/10 text-stucco hover:text-white transition-colors flex items-center justify-center text-xs" title="Toggle Haptic Click Sounds">
+        <span class="material-symbols-outlined text-[18px]">volume_up</span>
+      </button>
+
+      <!-- Standalone Dashboard Link -->
+      <a href="dashboard.html" class="hidden sm:inline-flex items-center gap-1.5 text-xs text-stucco hover:text-white px-3 py-1.5 rounded-xl border border-white/10 hover:border-white/20 transition-all">
+        <span>Deep App</span>
+        <span class="material-symbols-outlined text-xs">open_in_new</span>
+      </a>
+
+      <!-- Launch Terminal CTA -->
+      <a href="#live-terminal" class="btn-acid px-4 py-2 rounded-xl text-xs flex items-center gap-1.5">
+        <span>Launch Terminal</span>
+        <span class="material-symbols-outlined text-sm">bolt</span>
+      </a>
+    </div>
+  </header>
+
+
+  <!-- =========================================================================
+       SECTION 1: 3D PERSPECTIVE "SCALE" HERO (WARM ALABASTER / BONE CANVAS)
+       ========================================================================= -->
+  <section id="scale-hero" class="relative min-h-screen pt-32 pb-20 px-4 sm:px-6 lg:px-12 flex flex-col justify-between overflow-hidden bg-alabaster">
+    <!-- Laser streak top accent -->
+    <div class="laser-streak-top"></div>
+
+    <!-- Kinetic Marquee Telemetry Strip -->
+    <div class="w-full py-2 mb-8 border-y border-obsidian/10 bg-obsidian/[0.02]">
+      <div class="kinetic-marquee">
+        <div class="kinetic-marquee-inner font-mono text-[11px] tracking-widest uppercase text-obsidian/60">
+          <span>● 412 ACTIVE SKUs INDEXED</span>
+          <span>// SHOPIFY LIVE SYNC ACTIVE</span>
+          <span>// WORKING CAPITAL LIQUIDATION OPTIMIZER</span>
+          <span>// ₹72,000 STAGNANT CAPITAL DETECTED</span>
+          <span>// OFFLINE POS + WAREHOUSE TIER READY</span>
+          <span>// PREDICTIVE DEMAND VELOCITY ENGINE</span>
+          <span>// ZERO REORDER TRAPS</span>
+        </div>
+        <div class="kinetic-marquee-inner font-mono text-[11px] tracking-widest uppercase text-obsidian/60" aria-hidden="true">
+          <span>● 412 ACTIVE SKUs INDEXED</span>
+          <span>// SHOPIFY LIVE SYNC ACTIVE</span>
+          <span>// WORKING CAPITAL LIQUIDATION OPTIMIZER</span>
+          <span>// ₹72,000 STAGNANT CAPITAL DETECTED</span>
+          <span>// OFFLINE POS + WAREHOUSE TIER READY</span>
+          <span>// PREDICTIVE DEMAND VELOCITY ENGINE</span>
+          <span>// ZERO REORDER TRAPS</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Hero Content Grid -->
+    <div class="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center flex-1 my-auto">
+      
+      <!-- Left Column: Kinetic Typography & Scale Hero -->
+      <div class="lg:col-span-8 flex flex-col justify-center">
+        <!-- Sub-header Badge -->
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-obsidian text-alabaster font-mono text-xs mb-6 w-fit shadow-md">
+          <span class="w-2 h-2 rounded-full bg-acid animate-ping"></span>
+          <span class="tracking-wider">AUTONOMOUS WORKING CAPITAL ARCHITECTURE</span>
+        </div>
+
+        <!-- 3D PERSPECTIVE "SCALE." DISPLAY -->
+        <div class="perspective-container my-2 select-none" id="scale-interactive-box">
+          <h1 class="perspective-tilt font-display font-extrabold text-[clamp(4.8rem,14vw,12.5rem)] text-obsidian leading-[0.88] tracking-[-0.05em] cursor-pointer" title="Hover to interact in 3D">
+            Scale<span class="text-acid" style="text-shadow: 2px 2px 0px #0D0D0D, 0 0 40px rgba(232, 255, 0, 0.4);">.</span>
+          </h1>
+        </div>
+
+        <!-- Editorial Subtitle & Thesis -->
+        <p class="font-sans text-xl sm:text-2xl text-obsidian/80 max-w-2xl font-medium mt-6 leading-snug">
+          Turn Dead Stock into <span class="font-display font-bold text-obsidian underline decoration-acid decoration-4 underline-offset-4">Liquid Working Capital</span>.
+        </p>
+        <p class="font-sans text-sm sm:text-base text-stucco max-w-xl mt-3 leading-relaxed">
+          Mercura AI ingests real-time point-of-sale and warehouse velocity to uncover hidden inventory decay before profit margins bleed. Free up cash in days, not quarters.
+        </p>
+
+        <!-- CTA Cluster -->
+        <div class="flex flex-wrap items-center gap-4 mt-8">
+          <a href="#live-terminal" class="btn-acid px-7 py-4 rounded-xl text-sm flex items-center gap-2 shadow-[0_10px_30px_rgba(232,255,0,0.4)]">
+            <span class="font-bold">LAUNCH LIVE TERMINAL</span>
+            <span class="material-symbols-outlined text-lg">bolt</span>
+          </a>
+          <a href="#glass-cards" class="px-6 py-4 rounded-xl text-sm font-semibold text-obsidian bg-white/70 hover:bg-white border border-obsidian/15 shadow-sm transition-all flex items-center gap-2">
+            <span>Inspect 3D Glass Cards</span>
+            <span class="material-symbols-outlined text-lg">view_in_ar</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Right Column: Tactile Hero Micro-Cards & Live Ticker -->
+      <div class="lg:col-span-4 flex flex-col gap-5">
+        
+        <!-- Live Telemetry Card: Capital Health -->
+        <div class="glass-card-light p-6 rounded-3xl relative overflow-hidden group">
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-[11px] font-mono uppercase tracking-wider text-stucco">TOTAL INVENTORY VALUE</span>
+            <span class="flex items-center gap-1 text-[11px] font-mono text-emerald font-semibold bg-emerald/10 px-2 py-0.5 rounded-full">
+              <span class="material-symbols-outlined text-xs">trending_up</span> +3.4% mo/mo
+            </span>
+          </div>
+          <div class="font-mono text-4xl sm:text-5xl font-extrabold text-obsidian tracking-tight tabular-nums">
+            ₹4,85,000
+          </div>
+          <div class="mt-4 pt-4 border-t border-obsidian/10 flex items-center justify-between text-xs text-stucco">
+            <span>412 Active SKUs Tracked</span>
+            <span class="text-obsidian font-semibold">Sharma Apparels</span>
+          </div>
+        </div>
+
+        <!-- Floating Critical SKU Teaser Card (JKT-409) -->
+        <a href="#glass-cards" class="glass-card-light p-5 rounded-3xl relative overflow-hidden group border-l-4 border-l-crimson hover:border-l-acid transition-all block">
+          <div class="flex items-center gap-3">
+            <img src="img/jacket.jpg" alt="Winter Heavy Jacket" class="w-14 h-14 rounded-2xl object-cover shadow-sm group-hover:scale-105 transition-transform">
+            <div class="flex-1">
+              <div class="flex items-center justify-between">
+                <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-obsidian text-alabaster font-bold">#JKT-409</span>
+                <span class="flex items-center gap-1 text-[10px] font-mono font-bold text-crimson">
+                  <span class="pulse-beacon-crimson"></span> 82% RISK
+                </span>
+              </div>
+              <h4 class="font-display font-bold text-sm text-obsidian mt-1">Winter Heavy Jacket</h4>
+              <p class="font-mono text-xs font-bold text-crimson mt-0.5">₹38,000 Capital Locked (63 Days)</p>
+            </div>
+          </div>
+          <div class="mt-3 flex items-center justify-between text-[11px] bg-obsidian/5 px-3 py-1.5 rounded-xl text-obsidian/70">
+            <span>AI Simulation: 15% Clearance</span>
+            <span class="text-obsidian font-bold flex items-center gap-1">
+              Unlock ₹31k <span class="material-symbols-outlined text-xs">arrow_forward</span>
+            </span>
+          </div>
+        </a>
+
+        <!-- Fast Runner Card (SH-102) -->
+        <a href="#glass-cards" class="glass-card-light p-5 rounded-3xl relative overflow-hidden group border-l-4 border-l-acid transition-all block">
+          <div class="flex items-center gap-3">
+            <img src="img/shoes.jpg" alt="Running Shoes" class="w-14 h-14 rounded-2xl object-cover shadow-sm group-hover:scale-105 transition-transform">
+            <div class="flex-1">
+              <div class="flex items-center justify-between">
+                <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-obsidian text-alabaster font-bold">#SH-102</span>
+                <span class="flex items-center gap-1 text-[10px] font-mono font-bold text-amber">
+                  4 DAYS RUNWAY
+                </span>
+              </div>
+              <h4 class="font-display font-bold text-sm text-obsidian mt-1">AirSprint Running Shoes</h4>
+              <p class="font-mono text-xs font-semibold text-obsidian/80 mt-0.5">Velocity: 8.4 pairs/wk (14 left)</p>
+            </div>
+          </div>
+          <div class="mt-3 flex items-center justify-between text-[11px] bg-acid/20 px-3 py-1.5 rounded-xl text-obsidian">
+            <span class="font-semibold text-obsidian">Lost Revenue Risk: ₹18,400</span>
+            <span class="font-bold flex items-center gap-1 text-obsidian">
+              Reorder PO <span class="material-symbols-outlined text-xs">arrow_forward</span>
+            </span>
+          </div>
+        </a>
+
+      </div>
+    </div>
+
+    <!-- Bottom Metric Ticker -->
+    <div class="max-w-7xl mx-auto w-full grid grid-cols-2 sm:grid-cols-4 gap-4 pt-12 border-t border-obsidian/10 mt-12">
+      <div>
+        <span class="font-mono text-xs text-stucco uppercase tracking-wider block">Healthy Stock</span>
+        <span class="font-mono text-2xl font-bold text-obsidian mt-1 block">255 SKUs</span>
+      </div>
+      <div>
+        <span class="font-mono text-xs text-stucco uppercase tracking-wider block">Low Stock Alert</span>
+        <span class="font-mono text-2xl font-bold text-amber mt-1 block">74 SKUs</span>
+      </div>
+      <div>
+        <span class="font-mono text-xs text-stucco uppercase tracking-wider block">Dead Stock Risk</span>
+        <span class="font-mono text-2xl font-bold text-crimson mt-1 block">49 SKUs</span>
+      </div>
+      <div>
+        <span class="font-mono text-xs text-stucco uppercase tracking-wider block">AI Recoverable Cash</span>
+        <span class="font-mono text-2xl font-bold text-obsidian mt-1 block flex items-center gap-1 text-acid-glow">
+          <span class="text-obsidian bg-acid px-1.5 py-0.5 rounded text-lg font-mono font-black">₹56,200</span>
+        </span>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- =========================================================================
+       SECTION 2: DOUBLE-EXPOSURE GHOST NUMERALS & EDITORIAL MACRO INSIGHTS
+       ========================================================================= -->
+  <section id="ghost-numerals" class="relative py-28 px-4 sm:px-6 lg:px-12 bg-alabaster border-t border-obsidian/10 overflow-hidden">
+    <div class="max-w-7xl mx-auto">
+      
+      <!-- Editorial Section Heading -->
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
+        <div>
+          <span class="font-mono text-xs text-crimson font-bold uppercase tracking-widest block mb-2">02 // THE BRUTAL TRUTH OF RETAIL CASH FLOW</span>
+          <h2 class="font-display font-extrabold text-4xl sm:text-6xl text-obsidian tracking-tight leading-none">
+            Where Working Capital Goes to Die.
+          </h2>
+        </div>
+        <p class="font-sans text-sm sm:text-base text-stucco max-w-md">
+          Most merchants don’t fail from lack of demand. They suffocate with lakhs of cash frozen in stagnant, over-ordered merchandise while best-sellers run out.
+        </p>
+      </div>
+
+      <!-- Editorial Grid with Double-Exposure Ghost Numerals Motif -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        
+        <!-- Large Ghost Card 1: 82% Dead Stock Risk -->
+        <div class="lg:col-span-7 glass-card-light p-8 sm:p-12 rounded-3xl relative overflow-hidden flex flex-col justify-between min-h-[460px]">
+          <!-- Oversized Ghost Numeral Background Layer -->
+          <div class="ghost-numeral light-mode absolute -bottom-6 -right-6 select-none leading-none z-0">
+            82%
+          </div>
+
+          <!-- Foreground Content -->
+          <div class="relative z-10">
+            <div class="flex items-center gap-2 mb-6">
+              <span class="px-2.5 py-1 rounded-full bg-crimson/10 text-crimson font-mono text-xs font-bold border border-crimson/20">
+                CRITICAL STAGNANCY PATTERN
+              </span>
+              <span class="font-mono text-xs text-stucco">DIAGNOSIS #D-409</span>
+            </div>
+
+            <h3 class="font-display font-extrabold text-2xl sm:text-4xl text-obsidian tracking-tight max-w-lg mb-4">
+              47 Heavy Winter Jackets stuck for 63 consecutive days.
+            </h3>
+            <p class="font-sans text-sm sm:text-base text-stucco max-w-md leading-relaxed">
+              Unseasonal Northern climate warming shifted consumer demand +4°C warmer. Reorder was sent automatically without demand correlation.
+            </p>
+          </div>
+
+          <!-- Bottom Telemetry Metric Panel -->
+          <div class="relative z-10 pt-8 mt-8 border-t border-obsidian/10 grid grid-cols-3 gap-4">
+            <div>
+              <span class="font-mono text-xs text-stucco uppercase block">Capital Trapped</span>
+              <span class="font-mono text-xl sm:text-2xl font-bold text-crimson block mt-1">₹38,000</span>
+            </div>
+            <div>
+              <span class="font-mono text-xs text-stucco uppercase block">Daily Margin Decay</span>
+              <span class="font-mono text-xl sm:text-2xl font-bold text-obsidian block mt-1">-₹420/day</span>
+            </div>
+            <div>
+              <span class="font-mono text-xs text-stucco uppercase block">Recovery Window</span>
+              <span class="font-mono text-xl sm:text-2xl font-bold text-obsidian block mt-1">18 Days Left</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Large Ghost Card 2: 25 Days Lead-Time Trap -->
+        <div class="lg:col-span-5 glass-card-light p-8 sm:p-10 rounded-3xl relative overflow-hidden flex flex-col justify-between min-h-[460px]">
+          <!-- Oversized Ghost Numeral Background Layer -->
+          <div class="ghost-numeral light-mode absolute -bottom-8 -right-4 select-none leading-none z-0">
+            25
+          </div>
+
+          <!-- Foreground Content -->
+          <div class="relative z-10">
+            <div class="flex items-center gap-2 mb-6">
+              <span class="px-2.5 py-1 rounded-full bg-amber/15 text-amber font-mono text-xs font-bold border border-amber/30">
+                SUPPLIER MOQ & LEAD TIME
+              </span>
+              <span class="font-mono text-xs text-stucco">DAYS GAP</span>
+            </div>
+
+            <h3 class="font-display font-extrabold text-2xl sm:text-3xl text-obsidian tracking-tight mb-4">
+              The 25-Day Restock Blindspot.
+            </h3>
+            <p class="font-sans text-sm text-stucco leading-relaxed mb-6">
+              Suppliers demand Minimum Order Quantities of 25+ units. Mercura calculates exact batch velocity so you never get tricked into financing the factory’s warehouse.
+            </p>
+
+            <div class="p-4 rounded-2xl bg-obsidian text-alabaster font-mono text-xs space-y-2">
+              <div class="flex justify-between">
+                <span class="text-stucco">AirSprint Footwear:</span>
+                <span class="text-acid font-bold">4.2 days runway left</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-stucco">Supplier Lead Time:</span>
+                <span class="text-white font-bold">7 days</span>
+              </div>
+              <div class="flex justify-between text-crimson font-bold pt-1 border-t border-white/10">
+                <span>Revenue Lost at Stockout:</span>
+                <span>₹18,400</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom Action Link -->
+          <div class="relative z-10 pt-6">
+            <a href="#glass-cards" class="text-xs font-bold font-mono uppercase tracking-wider text-obsidian hover:text-acid transition-colors flex items-center gap-1.5">
+              <span>View Prescriptive Interventions</span>
+              <span class="material-symbols-outlined text-sm">arrow_forward</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Macro Telemetry Comparison Ribbon -->
+      <div class="mt-12 p-6 sm:p-8 rounded-3xl bg-obsidian text-white flex flex-col md:flex-row items-center justify-between gap-6 shadow-2xl">
+        <div class="flex items-center gap-4">
+          <div class="w-12 h-12 rounded-2xl bg-acid text-obsidian flex items-center justify-center font-display font-black text-2xl">
+            ₹
+          </div>
+          <div>
+            <h4 class="font-display font-bold text-lg text-white">Capital Acceleration Factor</h4>
+            <p class="font-sans text-xs text-stucco">Mercura accelerates inventory turnaround from 68 days down to 21 days.</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-6 font-mono text-sm">
+          <div class="text-right">
+            <span class="text-stucco block text-[10px] uppercase">Trapped Capital</span>
+            <span class="text-crimson font-bold line-through text-base">₹72,000</span>
+          </div>
+          <span class="material-symbols-outlined text-acid text-xl">arrow_forward</span>
+          <div>
+            <span class="text-acid block text-[10px] uppercase font-bold">Liquid Cash Reinvested</span>
+            <span class="text-acid font-extrabold text-xl">+₹56,200</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- =========================================================================
+       SECTION 3: KINETIC 3D GLASS CARDS SHOWCASE (PITCH OBSIDIAN CANVAS)
+       ========================================================================= -->
+  <section id="glass-cards" class="relative py-32 px-4 sm:px-6 lg:px-12 bg-obsidian text-white overflow-hidden">
+    <!-- Ambient Acid Light Streaks & Radial Glows -->
+    <div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-acid/10 rounded-full blur-[140px] pointer-events-none"></div>
+    <div class="absolute bottom-10 right-10 w-[450px] h-[450px] bg-crimson/10 rounded-full blur-[120px] pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto relative z-10">
+      
+      <!-- Section Header -->
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
+        <div>
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-acid font-mono text-xs mb-3">
+            <span class="pulse-beacon-acid"></span>
+            <span>GLASSMORPHISM 2.0 // HIGH PRECISION OPTICAL CARDS</span>
+          </div>
+          <h2 class="font-display font-extrabold text-4xl sm:text-6xl text-white tracking-tight">
+            Prescriptive Stock Intelligence.
+          </h2>
+        </div>
+        <p class="font-sans text-sm sm:text-base text-stucco max-w-md">
+          Precision-milled frosted glass cards with specular rims, live SVG decay sparklines, and 1-tap capital liberation triggers.
+        </p>
+      </div>
+
+      <!-- The 3 Signature Optical Glass Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        
+        <!-- CARD 1: #JKT-409 (WINTER HEAVY JACKET - CRITICAL DEAD STOCK HERO) -->
+        <div class="glass-card-dark card-glow-risk p-7 rounded-3xl flex flex-col justify-between group relative" id="card-jkt-409">
+          <!-- Top Row -->
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <div class="flex items-center gap-3">
+                <img src="img/jacket.jpg" alt="Winter Heavy Jacket" class="w-14 h-14 rounded-2xl object-cover border border-white/20 group-hover:scale-105 transition-transform">
+                <div>
+                  <span class="px-2 py-0.5 rounded bg-white/10 text-acid font-mono text-xs font-bold">#JKT-409</span>
+                  <h3 class="font-display font-bold text-lg text-white mt-1">Winter Heavy Jacket</h3>
+                  <span class="text-xs text-stucco font-medium">Nordic Wear Ltd. • Outerwear</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Live Telemetry Status Pill -->
+            <div class="flex items-center justify-between py-2 px-3 rounded-xl bg-crimson/15 border border-crimson/30 text-crimson text-xs font-mono font-bold mb-5" id="jkt-status-badge">
+              <div class="flex items-center gap-2">
+                <span class="pulse-beacon-crimson"></span>
+                <span>82% DEAD STOCK RISK</span>
+              </div>
+              <span>63 DAYS STALE</span>
+            </div>
+
+            <!-- Hero Tabular Price Metric -->
+            <div class="mb-5">
+              <span class="text-[11px] font-mono text-stucco uppercase tracking-wider block">Capital Frozen</span>
+              <div class="font-mono text-4xl font-extrabold text-white tracking-tight tabular-nums mt-0.5 flex items-baseline gap-2">
+                <span id="jkt-locked-price">₹38,000</span>
+                <span class="text-xs font-mono font-normal text-stucco">47 Units @ ₹808</span>
+              </div>
+            </div>
+
+            <!-- Interactive Sparkline: 12-Week Sales Velocity Decay Curve -->
+            <div class="mb-6 bg-white/[0.03] p-3 rounded-2xl border border-white/5">
+              <div class="flex items-center justify-between text-[11px] font-mono text-stucco mb-2">
+                <span>12-Week Velocity Decay</span>
+                <span class="text-crimson font-bold">0.34 units/wk (Stagnant)</span>
+              </div>
+              <svg viewBox="0 0 300 60" class="w-full h-12 overflow-visible">
+                <defs>
+                  <linearGradient id="decayGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="#E8FF00" />
+                    <stop offset="60%" stop-color="#FF9900" />
+                    <stop offset="100%" stop-color="#FF331F" />
+                  </linearGradient>
+                </defs>
+                <!-- Grid lines -->
+                <line x1="0" y1="50" x2="300" y2="50" stroke="rgba(255,255,255,0.08)" stroke-dasharray="3,3" />
+                <line x1="0" y1="20" x2="300" y2="20" stroke="rgba(255,255,255,0.08)" stroke-dasharray="3,3" />
+                <!-- Decay Curve -->
+                <path d="M 0 10 Q 60 12, 120 28 T 200 48 T 300 54" fill="none" stroke="url(#decayGrad)" stroke-width="3" stroke-linecap="round" class="sparkline-path" />
+                <!-- End alert dot -->
+                <circle cx="300" cy="54" r="4" fill="#FF331F" class="animate-ping" />
+                <circle cx="300" cy="54" r="4" fill="#FF331F" />
+              </svg>
+            </div>
+
+            <!-- AI Prescriptive Drawer -->
+            <div class="p-4 rounded-2xl bg-white/[0.04] border border-white/10 text-xs space-y-2 mb-6" id="jkt-ai-drawer">
+              <div class="flex items-center gap-1.5 text-acid font-bold uppercase tracking-wider font-mono">
+                <span class="material-symbols-outlined text-sm">auto_awesome</span>
+                <span>AI Root Cause & Simulation</span>
+              </div>
+              <p class="text-white/80 leading-relaxed">
+                Triggered by unseasonal <strong>+4°C warm weather shift</strong> in Northern hubs. 47 units will become completely unsellable after February.
+              </p>
+              <div class="p-2.5 rounded-xl bg-acid/10 border border-acid/20 text-acid font-mono text-[11px]">
+                💡 Strategy: Apply <strong>15% Clearance Promo</strong> across Shopify & POS to recover <strong>₹31,000</strong> within 18 days.
+              </div>
+            </div>
+          </div>
+
+          <!-- 1-Tap Action Button Cluster -->
+          <div class="space-y-2 pt-2 border-t border-white/10">
+            <button id="jkt-apply-promo-btn" class="w-full btn-acid py-3 rounded-xl text-xs flex items-center justify-center gap-2">
+              <span class="material-symbols-outlined text-base">bolt</span>
+              <span>Apply 15% Promo (Recover ₹31k)</span>
+            </button>
+            <button id="jkt-lock-reorder-btn" class="w-full btn-frosted py-2.5 rounded-xl text-xs flex items-center justify-center gap-2">
+              <span class="material-symbols-outlined text-base">lock</span>
+              <span>Lock Supplier Reorders (Block PO)</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- CARD 2: #SH-102 (AIRSPRINT RUNNING SHOES - STOCKOUT IMMINENT) -->
+        <div class="glass-card-dark card-glow-acid p-7 rounded-3xl flex flex-col justify-between group relative" id="card-sh-102">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <div class="flex items-center gap-3">
+                <img src="img/shoes.jpg" alt="Running Shoes" class="w-14 h-14 rounded-2xl object-cover border border-white/20 group-hover:scale-105 transition-transform">
+                <div>
+                  <span class="px-2 py-0.5 rounded bg-white/10 text-acid font-mono text-xs font-bold">#SH-102</span>
+                  <h3 class="font-display font-bold text-lg text-white mt-1">AirSprint Running Shoes</h3>
+                  <span class="text-xs text-stucco font-medium">Apex Footwear Ltd. • Footwear</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Status Pill -->
+            <div class="flex items-center justify-between py-2 px-3 rounded-xl bg-acid/15 border border-acid/30 text-acid text-xs font-mono font-bold mb-5">
+              <div class="flex items-center gap-2">
+                <span class="pulse-beacon-acid"></span>
+                <span>STOCKOUT IMMINENT</span>
+              </div>
+              <span>4 DAYS RUNWAY</span>
+            </div>
+
+            <!-- Hero Metric -->
+            <div class="mb-5">
+              <span class="text-[11px] font-mono text-stucco uppercase tracking-wider block">Lost Revenue Risk</span>
+              <div class="font-mono text-4xl font-extrabold text-white tracking-tight tabular-nums mt-0.5 flex items-baseline gap-2">
+                <span>₹18,400</span>
+                <span class="text-xs font-mono font-normal text-amber">14 units left</span>
+              </div>
+            </div>
+
+            <!-- Upward Surge Sparkline -->
+            <div class="mb-6 bg-white/[0.03] p-3 rounded-2xl border border-white/5">
+              <div class="flex items-center justify-between text-[11px] font-mono text-stucco mb-2">
+                <span>Demand Surge Velocity</span>
+                <span class="text-acid font-bold">8.4 units/wk (Accelerating)</span>
+              </div>
+              <svg viewBox="0 0 300 60" class="w-full h-12 overflow-visible">
+                <defs>
+                  <linearGradient id="surgeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="#00C853" />
+                    <stop offset="100%" stop-color="#E8FF00" />
+                  </linearGradient>
+                </defs>
+                <line x1="0" y1="50" x2="300" y2="50" stroke="rgba(255,255,255,0.08)" stroke-dasharray="3,3" />
+                <path d="M 0 52 Q 80 48, 150 32 T 240 18 T 300 8" fill="none" stroke="url(#surgeGrad)" stroke-width="3" stroke-linecap="round" class="sparkline-path" />
+                <circle cx="300" cy="8" r="4" fill="#E8FF00" class="animate-ping" />
+                <circle cx="300" cy="8" r="4" fill="#E8FF00" />
+              </svg>
+            </div>
+
+            <!-- AI Strategy Drawer -->
+            <div class="p-4 rounded-2xl bg-white/[0.04] border border-white/10 text-xs space-y-2 mb-6">
+              <div class="flex items-center gap-1.5 text-acid font-bold uppercase tracking-wider font-mono">
+                <span class="material-symbols-outlined text-sm">auto_awesome</span>
+                <span>Replenishment Strategy</span>
+              </div>
+              <p class="text-white/80 leading-relaxed">
+                Stock will hit zero in <strong>3.8 days</strong>. Supplier Apex Footwear requires 7-day fulfillment. Reorder immediately to avoid stockout.
+              </p>
+              <div class="p-2.5 rounded-xl bg-white/5 font-mono text-[11px] text-stucco">
+                📞 Apex Footwear Ltd.: <span class="text-white font-bold">+91 98201 44821</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Action Button -->
+          <div class="space-y-2 pt-2 border-t border-white/10">
+            <button id="sh-reorder-btn" class="w-full btn-acid py-3 rounded-xl text-xs flex items-center justify-center gap-2">
+              <span class="material-symbols-outlined text-base">shopping_cart_checkout</span>
+              <span>1-Tap Reorder (35 units · ₹38,500)</span>
+            </button>
+            <button id="sh-copy-note-btn" class="w-full btn-frosted py-2.5 rounded-xl text-xs flex items-center justify-center gap-2">
+              <span class="material-symbols-outlined text-base">content_copy</span>
+              <span>Copy Supplier WhatsApp Note</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- CARD 3: #ACC-091 (WOOLEN SCARF & GLOVES - BUNDLE OPPORTUNITY) -->
+        <div class="glass-card-dark p-7 rounded-3xl flex flex-col justify-between group relative" id="card-acc-091">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <div class="flex items-center gap-3">
+                <img src="img/scarf.jpg" alt="Woolen Scarf" class="w-14 h-14 rounded-2xl object-cover border border-white/20 group-hover:scale-105 transition-transform">
+                <div>
+                  <span class="px-2 py-0.5 rounded bg-white/10 text-acid font-mono text-xs font-bold">#ACC-091</span>
+                  <h3 class="font-display font-bold text-lg text-white mt-1">Woolen Scarf & Gloves</h3>
+                  <span class="text-xs text-stucco font-medium">Hill Thread Co. • Accessories</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Status Pill -->
+            <div class="flex items-center justify-between py-2 px-3 rounded-xl bg-amber/15 border border-amber/30 text-amber text-xs font-mono font-bold mb-5">
+              <div class="flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-amber"></span>
+                <span>SLOW-MOVING ACCESSORY</span>
+              </div>
+              <span>58 DAYS AGED</span>
+            </div>
+
+            <!-- Metric -->
+            <div class="mb-5">
+              <span class="text-[11px] font-mono text-stucco uppercase tracking-wider block">Capital Sitting</span>
+              <div class="font-mono text-4xl font-extrabold text-white tracking-tight tabular-nums mt-0.5 flex items-baseline gap-2">
+                <span>₹6,090</span>
+                <span class="text-xs font-mono font-normal text-stucco">29 Units @ ₹210</span>
+              </div>
+            </div>
+
+            <!-- Velocity Profile -->
+            <div class="mb-6 bg-white/[0.03] p-3 rounded-2xl border border-white/5">
+              <div class="flex items-center justify-between text-[11px] font-mono text-stucco mb-2">
+                <span>Velocity</span>
+                <span class="text-amber font-bold">0.50 units/wk</span>
+              </div>
+              <svg viewBox="0 0 300 60" class="w-full h-12 overflow-visible">
+                <line x1="0" y1="40" x2="300" y2="40" stroke="rgba(255,255,255,0.08)" stroke-dasharray="3,3" />
+                <path d="M 0 32 L 60 36 L 120 34 L 180 40 L 240 38 L 300 42" fill="none" stroke="#FF9900" stroke-width="2.5" stroke-linecap="round" />
+                <circle cx="300" cy="42" r="3.5" fill="#FF9900" />
+              </svg>
+            </div>
+
+            <!-- AI Strategy Drawer -->
+            <div class="p-4 rounded-2xl bg-white/[0.04] border border-white/10 text-xs space-y-2 mb-6">
+              <div class="flex items-center gap-1.5 text-acid font-bold uppercase tracking-wider font-mono">
+                <span class="material-symbols-outlined text-sm">auto_awesome</span>
+                <span>Cross-Merchandise Strategy</span>
+              </div>
+              <p class="text-white/80 leading-relaxed">
+                Bundle with <strong>#JKT-409</strong> on Shopify for ₹1,699. Increases basket size by +18% and clears both dead SKUs simultaneously.
+              </p>
+              <div class="p-2.5 rounded-xl bg-emerald/10 border border-emerald/20 text-emerald font-mono text-[11px]">
+                📈 Projected Liquidation: 14 days (2.4x velocity jump).
+              </div>
+            </div>
+          </div>
+
+          <!-- Action Button -->
+          <div class="space-y-2 pt-2 border-t border-white/10">
+            <button id="acc-bundle-btn" class="w-full btn-acid py-3 rounded-xl text-xs flex items-center justify-center gap-2">
+              <span class="material-symbols-outlined text-base">join_inner</span>
+              <span>Create Outerwear Bundle (+₹14,200)</span>
+            </button>
+            <button class="w-full btn-frosted py-2.5 rounded-xl text-xs flex items-center justify-center gap-2" onclick="location.href='#live-terminal'">
+              <span class="material-symbols-outlined text-base">analytics</span>
+              <span>Deep Matrix Telemetry</span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- =========================================================================
+       SECTION 4: THE 4K LIVE TERMINAL & WORKING CAPITAL DASHBOARD
+       ========================================================================= -->
+  <section id="live-terminal" class="relative py-28 px-4 sm:px-6 lg:px-12 bg-obsidian text-white border-t border-white/10 overflow-hidden min-h-screen">
+    <!-- Ambient backlights -->
+    <div class="absolute -top-40 right-0 w-[600px] h-[600px] bg-acid/5 rounded-full blur-[160px] pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto relative z-10">
+      
+      <!-- Terminal Header & Merchant Profile -->
+      <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-8 border-b border-white/10">
+        <div>
+          <div class="flex items-center gap-3">
+            <span class="px-2.5 py-1 rounded bg-acid text-obsidian font-mono text-xs font-black tracking-wider uppercase">TERMINAL V2</span>
+            <div class="flex items-center gap-2 text-xs font-mono text-stucco">
+              <span class="w-2 h-2 rounded-full bg-acid animate-ping"></span>
+              <span>LIVE LEDGER // RECALCULATING IN REAL TIME</span>
+            </div>
+          </div>
+          <h2 class="font-display font-extrabold text-3xl sm:text-5xl text-white tracking-tight mt-2">
+            Working Capital Terminal
+          </h2>
+          <p class="font-sans text-xs sm:text-sm text-stucco mt-1">
+            Connected Store: <strong class="text-white">Sharma Apparels</strong> (Rajesh Sharma) • 412 Managed Inventory SKUs
+          </p>
+        </div>
+
+        <!-- Channel Filter Selector Pills -->
+        <div class="flex flex-wrap items-center gap-2 p-1.5 rounded-2xl bg-white/[0.04] border border-white/10" id="channel-selector">
+          <button class="terminal-channel-btn px-4 py-2 rounded-xl text-xs font-mono font-bold transition-all bg-acid text-obsidian shadow-lg" data-channel="all">
+            All Channels (100%)
+          </button>
+          <button class="terminal-channel-btn px-4 py-2 rounded-xl text-xs font-mono transition-all text-stucco hover:text-white" data-channel="shopify">
+            Shopify (46%)
+          </button>
+          <button class="terminal-channel-btn px-4 py-2 rounded-xl text-xs font-mono transition-all text-stucco hover:text-white" data-channel="pos">
+            Offline POS (38%)
+          </button>
+          <button class="terminal-channel-btn px-4 py-2 rounded-xl text-xs font-mono transition-all text-stucco hover:text-white" data-channel="warehouse">
+            Warehouse A (16%)
+          </button>
+        </div>
+      </div>
+
+      <!-- 4 Master Kinetic KPI Metric Tiles -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 my-8">
+        
+        <!-- Tile 1: Total Inventory Value -->
+        <div class="glass-card-dark p-6 rounded-3xl relative overflow-hidden">
+          <div class="flex items-center justify-between text-xs text-stucco font-mono mb-3">
+            <span>TOTAL VALUE</span>
+            <span class="material-symbols-outlined text-acid text-lg">inventory_2</span>
+          </div>
+          <div class="font-mono text-3xl sm:text-4xl font-extrabold text-white tracking-tight tabular-nums" id="kpi-inventory-val">
+            ₹4,85,000
+          </div>
+          <div class="mt-4 pt-3 border-t border-white/10 flex items-center justify-between text-[11px] text-stucco font-mono">
+            <span id="kpi-sku-count">412 SKUs active</span>
+            <span class="text-emerald font-semibold">+3.4% mo/mo</span>
+          </div>
+        </div>
+
+        <!-- Tile 2: Capital At Risk (Dynamic) -->
+        <div class="glass-card-dark p-6 rounded-3xl relative overflow-hidden border-l-4 border-l-crimson">
+          <div class="flex items-center justify-between text-xs text-stucco font-mono mb-3">
+            <span class="text-crimson font-bold">CAPITAL AT RISK</span>
+            <span class="pulse-beacon-crimson"></span>
+          </div>
+          <div class="font-mono text-3xl sm:text-4xl font-extrabold text-crimson tracking-tight tabular-nums" id="kpi-risk-val">
+            ₹72,000
+          </div>
+          <div class="mt-4 pt-3 border-t border-white/10 flex items-center justify-between text-[11px] text-stucco font-mono">
+            <span id="kpi-risk-count">83 SKUs slow/dead</span>
+            <span class="text-crimson font-bold">Stagnant</span>
+          </div>
+        </div>
+
+        <!-- Tile 3: Monthly Sales -->
+        <div class="glass-card-dark p-6 rounded-3xl relative overflow-hidden">
+          <div class="flex items-center justify-between text-xs text-stucco font-mono mb-3">
+            <span>MONTHLY RUN-RATE</span>
+            <span class="material-symbols-outlined text-emerald text-lg">point_of_sale</span>
+          </div>
+          <div class="font-mono text-3xl sm:text-4xl font-extrabold text-white tracking-tight tabular-nums" id="kpi-sales-val">
+            ₹1,85,400
+          </div>
+          <div class="mt-4 pt-3 border-t border-white/10 flex items-center justify-between text-[11px] text-stucco font-mono">
+            <span>Est. Profit: ₹56,200</span>
+            <span class="text-emerald font-semibold">+14.2%</span>
+          </div>
+        </div>
+
+        <!-- Tile 4: Recoverable Liquidity (Highlight) -->
+        <div class="glass-card-dark p-6 rounded-3xl relative overflow-hidden border-l-4 border-l-acid bg-acid/[0.04]">
+          <div class="flex items-center justify-between text-xs text-acid font-mono font-bold mb-3">
+            <span>AI RECOVERABLE</span>
+            <span class="material-symbols-outlined text-acid text-lg">currency_exchange</span>
+          </div>
+          <div class="font-mono text-3xl sm:text-4xl font-extrabold text-acid tracking-tight tabular-nums" id="kpi-recoverable-val">
+            ₹56,200
+          </div>
+          <div class="mt-4 pt-3 border-t border-white/10 flex items-center justify-between text-[11px] text-stucco font-mono">
+            <span>Unlockable in &lt;18d</span>
+            <span class="text-acid font-bold">1-Tap Action</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Working Capital Liquidity Simulator Slider -->
+      <div class="glass-card-dark p-6 sm:p-8 rounded-3xl mb-10 border border-acid/20">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="material-symbols-outlined text-acid text-xl">tune</span>
+              <h3 class="font-display font-bold text-xl text-white">Dynamic Capital Liquidation Simulator</h3>
+            </div>
+            <p class="font-sans text-xs text-stucco mt-1">
+              Adjust clearance promo to instantly calculate recoverable cash, velocity boost, and warehouse capacity liberated.
+            </p>
+          </div>
+          <div class="flex items-center gap-3">
+            <span class="font-mono text-xs text-stucco uppercase">Clearance Discount:</span>
+            <span class="px-3 py-1 rounded-xl bg-acid text-obsidian font-mono font-extrabold text-sm" id="sim-discount-badge">15%</span>
+          </div>
+        </div>
+
+        <!-- Slider Bar -->
+        <div class="space-y-4">
+          <input type="range" min="0" max="30" step="5" value="15" id="sim-discount-range" class="w-full accent-[#E8FF00] h-2 bg-white/10 rounded-lg cursor-pointer">
+          <div class="flex justify-between font-mono text-[11px] text-stucco">
+            <span>0% (Status Quo)</span>
+            <span>10% (Gentle)</span>
+            <span class="text-acid font-bold">15% (Mercura Optimal)</span>
+            <span>20% (Aggressive)</span>
+            <span>30% (Flash Clearance)</span>
+          </div>
+        </div>
+
+        <!-- Simulator Result Metrics -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-6 pt-6 border-t border-white/10 font-mono text-center">
+          <div class="p-3 rounded-2xl bg-white/[0.02]">
+            <span class="text-[10px] text-stucco uppercase block">Cash Liberated</span>
+            <span class="text-xl sm:text-2xl font-bold text-acid mt-1 block tabular-nums" id="sim-cash-recovered">₹38,200</span>
+          </div>
+          <div class="p-3 rounded-2xl bg-white/[0.02]">
+            <span class="text-[10px] text-stucco uppercase block">Velocity Multiplier</span>
+            <span class="text-xl sm:text-2xl font-bold text-white mt-1 block tabular-nums" id="sim-velocity-mult">2.45x</span>
+          </div>
+          <div class="p-3 rounded-2xl bg-white/[0.02]">
+            <span class="text-[10px] text-stucco uppercase block">Days to Clear</span>
+            <span class="text-xl sm:text-2xl font-bold text-emerald mt-1 block tabular-nums" id="sim-days-to-clear">18 Days</span>
+          </div>
+          <div class="p-3 rounded-2xl bg-white/[0.02]">
+            <span class="text-[10px] text-stucco uppercase block">Warehouse Space</span>
+            <span class="text-xl sm:text-2xl font-bold text-white mt-1 block tabular-nums" id="sim-space-freed">+34% Free</span>
+          </div>
+        </div>
+
+        <div class="mt-6 flex justify-end">
+          <button id="sim-execute-all-btn" class="btn-acid px-6 py-2.5 rounded-xl text-xs flex items-center gap-2">
+            <span class="material-symbols-outlined text-sm">bolt</span>
+            <span>Execute Optimal 15% Clearance Across Store</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Interactive SKU Matrix & Catalog Controls -->
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+        <!-- Status Filter Chips -->
+        <div class="flex flex-wrap items-center gap-2" id="status-chips">
+          <button class="status-chip px-3.5 py-1.5 rounded-xl font-mono text-xs font-semibold bg-acid text-obsidian" data-status="all">
+            All SKUs (<span id="count-all">412</span>)
+          </button>
+          <button class="status-chip px-3.5 py-1.5 rounded-xl font-mono text-xs text-stucco hover:text-white bg-white/5" data-status="dead">
+            Dead Stock (<span id="count-dead">49</span>)
+          </button>
+          <button class="status-chip px-3.5 py-1.5 rounded-xl font-mono text-xs text-stucco hover:text-white bg-white/5" data-status="risk">
+            Slow Risk (<span id="count-risk">32</span>)
+          </button>
+          <button class="status-chip px-3.5 py-1.5 rounded-xl font-mono text-xs text-stucco hover:text-white bg-white/5" data-status="low">
+            Stockout Alert (<span id="count-low">74</span>)
+          </button>
+          <button class="status-chip px-3.5 py-1.5 rounded-xl font-mono text-xs text-stucco hover:text-white bg-white/5" data-status="healthy">
+            Healthy (<span id="count-healthy">255</span>)
+          </button>
+        </div>
+
+        <!-- Search Bar -->
+        <div class="relative w-full md:w-72">
+          <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-stucco text-lg">search</span>
+          <input type="text" id="sku-search-input" placeholder="Search SKU, item, supplier..." class="w-full bg-white/5 border border-white/10 rounded-xl pl-10 pr-4 py-2 text-xs text-white placeholder-stucco focus:outline-none focus:border-acid transition-colors font-mono">
+        </div>
+      </div>
+
+      <!-- Live SKU Catalog Grid (Dynamic Render Target) -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="sku-grid-container">
+        <!-- Injected via JavaScript from window.Mercura.catalog() -->
+      </div>
+
+      <!-- Pagination / Load More Bar -->
+      <div class="flex items-center justify-between py-6 mt-8 border-t border-white/10 font-mono text-xs text-stucco">
+        <span id="pagination-status">Showing 12 of 412 SKUs</span>
+        <div class="flex items-center gap-2">
+          <button id="prev-page-btn" class="px-4 py-2 rounded-xl bg-white/5 hover:bg-white/10 text-white disabled:opacity-30 disabled:cursor-not-allowed">
+            Previous
+          </button>
+          <span id="page-num-display" class="px-3 py-1 font-bold text-white">1</span>
+          <button id="next-page-btn" class="px-4 py-2 rounded-xl bg-white/5 hover:bg-white/10 text-white disabled:opacity-30 disabled:cursor-not-allowed">
+            Next
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- =========================================================================
+       SKU INTELLIGENCE MODAL / SLIDE-IN GLASS DRAWER
+       ========================================================================= -->
+  <div id="sku-drawer" class="fixed inset-0 z-50 pointer-events-none transition-all duration-300 opacity-0">
+    <!-- Backdrop blur -->
+    <div class="absolute inset-0 bg-obsidian/70 backdrop-blur-md drawer-backdrop"></div>
+    
+    <!-- Drawer Panel -->
+    <div class="absolute top-0 right-0 bottom-0 w-full max-w-xl bg-obsidian/95 border-l border-white/15 p-6 sm:p-8 overflow-y-auto flex flex-col justify-between transform translate-x-full transition-transform duration-300 ease-out drawer-panel shadow-2xl">
+      <div>
+        <div class="flex items-center justify-between pb-6 border-b border-white/10">
+          <div class="flex items-center gap-3">
+            <span class="px-2.5 py-1 rounded bg-acid text-obsidian font-mono font-bold text-xs" id="d-sku-code">#SKU-000</span>
+            <span class="text-xs text-stucco uppercase font-mono" id="d-sku-cat">Category</span>
+          </div>
+          <button id="drawer-close-btn" class="p-2 rounded-xl bg-white/5 hover:bg-white/10 text-stucco hover:text-white transition-colors">
+            <span class="material-symbols-outlined text-lg">close</span>
+          </button>
+        </div>
+
+        <!-- Product Hero in Drawer -->
+        <div class="flex items-start gap-5 my-6">
+          <img id="d-sku-img" src="img/jacket.jpg" alt="Product" class="w-20 h-20 rounded-2xl object-cover border border-white/20">
+          <div>
+            <h3 id="d-sku-name" class="font-display font-bold text-2xl text-white">Product Name</h3>
+            <p id="d-sku-supplier" class="text-xs text-stucco font-medium mt-1">Supplier Name</p>
+            <div class="mt-2 inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-mono font-bold" id="d-sku-status-pill">
+              STATUS
+            </div>
+          </div>
+        </div>
+
+        <!-- Channel Distribution Bar -->
+        <div class="mb-6 p-4 rounded-2xl bg-white/[0.03] border border-white/5 space-y-3">
+          <span class="text-[11px] font-mono text-stucco uppercase tracking-wider block">Channel Stock Allocation</span>
+          <div class="grid grid-cols-3 gap-2 text-center font-mono">
+            <div class="p-2 rounded-xl bg-white/5">
+              <span class="text-[10px] text-stucco block">Shopify</span>
+              <span class="font-bold text-white text-sm" id="d-channel-shopify">0 units</span>
+            </div>
+            <div class="p-2 rounded-xl bg-white/5">
+              <span class="text-[10px] text-stucco block">Offline POS</span>
+              <span class="font-bold text-white text-sm" id="d-channel-pos">0 units</span>
+            </div>
+            <div class="p-2 rounded-xl bg-white/5">
+              <span class="text-[10px] text-stucco block">Warehouse</span>
+              <span class="font-bold text-white text-sm" id="d-channel-warehouse">0 units</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Financial Breakdown Matrix -->
+        <div class="grid grid-cols-2 gap-4 mb-6 font-mono">
+          <div class="p-4 rounded-2xl bg-white/[0.03] border border-white/5">
+            <span class="text-[10px] text-stucco uppercase block">Total Units</span>
+            <span class="text-xl font-bold text-white mt-1 block" id="d-sku-units">0</span>
+          </div>
+          <div class="p-4 rounded-2xl bg-white/[0.03] border border-white/5">
+            <span class="text-[10px] text-stucco uppercase block">Inventory Value</span>
+            <span class="text-xl font-bold text-white mt-1 block" id="d-sku-value">₹0</span>
+          </div>
+          <div class="p-4 rounded-2xl bg-white/[0.03] border border-white/5">
+            <span class="text-[10px] text-stucco uppercase block">Retail Price</span>
+            <span class="text-xl font-bold text-white mt-1 block" id="d-sku-price">₹0</span>
+          </div>
+          <div class="p-4 rounded-2xl bg-white/[0.03] border border-white/5">
+            <span class="text-[10px] text-stucco uppercase block">Sales Velocity</span>
+            <span class="text-xl font-bold text-white mt-1 block" id="d-sku-velocity">0 /wk</span>
+          </div>
+        </div>
+
+        <!-- AI Prescriptive Recommendation in Drawer -->
+        <div class="p-5 rounded-2xl bg-acid/10 border border-acid/20 space-y-2 mb-6">
+          <div class="flex items-center gap-1.5 text-acid font-bold text-xs uppercase font-mono">
+            <span class="material-symbols-outlined text-sm">auto_awesome</span>
+            <span>Mercura Autonomous Strategy</span>
+          </div>
+          <p id="d-sku-ai-note" class="text-xs text-white/90 leading-relaxed font-sans">
+            AI analysis loading...
+          </p>
+        </div>
+      </div>
+
+      <!-- Drawer Bottom Action Buttons -->
+      <div class="pt-6 border-t border-white/10 space-y-3">
+        <button id="d-action-clearance-btn" class="w-full btn-acid py-3 rounded-xl text-xs flex items-center justify-center gap-2">
+          <span class="material-symbols-outlined text-base">bolt</span>
+          <span>Execute Clearance Discount</span>
+        </button>
+        <button id="d-action-reorder-btn" class="w-full btn-frosted py-2.5 rounded-xl text-xs flex items-center justify-center gap-2">
+          <span class="material-symbols-outlined text-base">content_copy</span>
+          <span>Copy Supplier Order Note</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- =========================================================================
+       EDITORIAL TOAST NOTIFICATION CONTAINER
+       ========================================================================= -->
+  <div id="editorial-toast" class="editorial-toast">
+    <span class="material-symbols-outlined text-acid text-xl" id="toast-icon">bolt</span>
+    <span id="toast-msg">Action completed successfully.</span>
+  </div>
+
+
+  <!-- =========================================================================
+       FOOTER
+       ========================================================================= -->
+  <footer class="py-16 px-4 sm:px-6 lg:px-12 bg-obsidian text-white border-t border-white/10 font-mono text-xs">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+      <div class="flex items-center gap-3">
+        <div class="w-7 h-7 rounded-lg bg-acid flex items-center justify-center text-obsidian font-display font-extrabold text-xs">
+          M
+        </div>
+        <span class="font-display font-bold text-sm tracking-tight text-white">MERCURA AI</span>
+        <span class="text-stucco">// TASTE SKILL 2.0 EDITORIAL FINTECH</span>
+      </div>
+      <div class="flex items-center gap-6 text-stucco">
+        <a href="#scale-hero" class="hover:text-acid transition-colors">Hero</a>
+        <a href="#ghost-numerals" class="hover:text-acid transition-colors">Numerals</a>
+        <a href="#glass-cards" class="hover:text-acid transition-colors">Glass Cards</a>
+        <a href="#live-terminal" class="hover:text-acid transition-colors">Live Terminal</a>
+        <a href="dashboard.html" class="hover:text-white transition-colors">Standalone App ↗</a>
+      </div>
+      <p class="text-stucco/60">
+        Engineered for High-Velocity Merchants. © 2026 Mercura.
+      </p>
+    </div>
+  </footer>
+
+
+  <!-- =========================================================================
+       CORE ENGINE & APPLICATION LOGIC
+       ========================================================================= -->
+  <script src="engine.js"></script>
+  <script src="nav.js"></script>
+
+  <script>
+    (function() {
+      const M = window.Mercura;
+      const STORAGE_KEY = "mercura-ledger-v1";
+      
+      // State
+      let actions = (function() {
+        try {
+          return JSON.parse(localStorage.getItem(STORAGE_KEY)) || M.emptyActions();
+        } catch(e) {
+          return M.emptyActions();
+        }
+      })();
+
+      let currentChannel = "all";
+      let currentStatus = "all";
+      let searchQuery = "";
+      let currentPage = 1;
+      const pageSize = 9;
+      let activeDrawerSku = null;
+
+      function persist() {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(actions));
+      }
+
+      function showToast(msg, icon = 'bolt') {
+        const toast = document.getElementById('editorial-toast');
+        const toastMsg = document.getElementById('toast-msg');
+        const toastIcon = document.getElementById('toast-icon');
+        if (!toast) return;
+        toastMsg.textContent = msg;
+        toastIcon.textContent = icon;
+        toast.classList.add('active');
+        clearTimeout(showToast._timer);
+        showToast._timer = setTimeout(() => {
+          toast.classList.remove('active');
+        }, 3600);
+      }
+
+      function fireConfetti() {
+        if (typeof confetti === 'function') {
+          confetti({
+            particleCount: 80,
+            spread: 60,
+            origin: { y: 0.8 },
+            colors: ['#E8FF00', '#FFFFFF', '#00C853']
+          });
+        }
+      }
+
+      // Initialize Lenis Smooth Scroll
+      if (typeof Lenis !== 'undefined') {
+        const lenis = new Lenis({
+          duration: 1.2,
+          easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+          direction: 'vertical',
+          gestureDirection: 'vertical',
+          smooth: true,
+          smoothTouch: false,
+          touchMultiplier: 2
+        });
+
+        function raf(time) {
+          lenis.raf(time);
+          requestAnimationFrame(raf);
+        }
+        requestAnimationFrame(raf);
+
+        // GSAP ScrollTrigger Integration
+        if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+          gsap.registerPlugin(ScrollTrigger);
+          lenis.on('scroll', ScrollTrigger.update);
+          gsap.ticker.add((time) => {
+            lenis.raf(time * 1000);
+          });
+          gsap.ticker.lagSmoothing(0);
+        }
+      }
+
+      // Interactive 3D Perspective Tilt on Mouse Movement for Hero "Scale."
+      const scaleBox = document.getElementById('scale-interactive-box');
+      if (scaleBox) {
+        const tiltHeading = scaleBox.querySelector('.perspective-tilt');
+        scaleBox.addEventListener('mousemove', (e) => {
+          const rect = scaleBox.getBoundingClientRect();
+          const x = (e.clientX - rect.left) / rect.width - 0.5;
+          const y = (e.clientY - rect.top) / rect.height - 0.5;
+          tiltHeading.style.transform = `perspective(1000px) rotateY(${-18 + x * 20}deg) rotateX(${4 - y * 16}deg)`;
+        });
+        scaleBox.addEventListener('mouseleave', () => {
+          tiltHeading.style.transform = `perspective(1000px) rotateY(-18deg) rotateX(4deg)`;
+        });
+      }
+
+      // Sound Toggle Button
+      const soundBtn = document.getElementById('sound-toggle-btn');
+      if (soundBtn) {
+        soundBtn.addEventListener('click', () => {
+          const isMuted = HapticAudio.toggleMute();
+          soundBtn.innerHTML = `<span class="material-symbols-outlined text-[18px]">${isMuted ? 'volume_off' : 'volume_up'}</span>`;
+          if (!isMuted) HapticAudio.click(900);
+          showToast(isMuted ? "Audio Haptics Muted" : "Audio Haptics Enabled 🔊", isMuted ? "volume_off" : "volume_up");
+        });
+      }
+
+      // Global click listener for tactile audio
+      document.addEventListener('click', (e) => {
+        if (e.target.closest('button, a, input[type="range"]')) {
+          HapticAudio.click(1100);
+        }
+      });
+
+      // Recalculate and render KPIs
+      function updateKPIs() {
+        const list = M.catalog(actions);
+        const k = M.kpis(list, currentChannel);
+
+        // HUD Elements
+        const hudTotal = document.getElementById('hud-total-val');
+        const hudRisk = document.getElementById('hud-risk-val');
+        if (hudTotal) hudTotal.textContent = M.inr(k.inventoryValue);
+        if (hudRisk) hudRisk.textContent = `${M.inr(k.capital)} AT RISK`;
+
+        // Terminal KPI Tiles
+        const kpiInv = document.getElementById('kpi-inventory-val');
+        const kpiRisk = document.getElementById('kpi-risk-val');
+        const kpiSales = document.getElementById('kpi-sales-val');
+        const kpiRec = document.getElementById('kpi-recoverable-val');
+        const kpiSkuCount = document.getElementById('kpi-sku-count');
+        const kpiRiskCount = document.getElementById('kpi-risk-count');
+
+        if (kpiInv) kpiInv.textContent = M.inr(k.inventoryValue);
+        if (kpiRisk) kpiRisk.textContent = M.inr(k.capital);
+        if (kpiSales) kpiSales.textContent = M.inr(k.sales);
+        if (kpiRec) kpiRec.textContent = M.inr(Math.round(k.capital * 0.78));
+        if (kpiSkuCount) kpiSkuCount.textContent = `${k.total} SKUs active`;
+        if (kpiRiskCount) kpiRiskCount.textContent = `${k.dead + k.risk} SKUs slow/dead`;
+
+        // Filter Counts
+        const cAll = document.getElementById('count-all');
+        const cDead = document.getElementById('count-dead');
+        const cRisk = document.getElementById('count-risk');
+        const cLow = document.getElementById('count-low');
+        const cHealthy = document.getElementById('count-healthy');
+
+        if (cAll) cAll.textContent = k.total;
+        if (cDead) cDead.textContent = k.dead;
+        if (cRisk) cRisk.textContent = k.risk;
+        if (cLow) cLow.textContent = k.low;
+        if (cHealthy) cHealthy.textContent = k.healthy;
+
+        // Card 1 JKT-409 state sync
+        const jacket = list.find(s => s.id === "JKT-409");
+        if (jacket) {
+          const jktStatus = document.getElementById('jkt-status-badge');
+          const jktPrice = document.getElementById('jkt-locked-price');
+          const jktBtn = document.getElementById('jkt-apply-promo-btn');
+          const jktLockBtn = document.getElementById('jkt-lock-reorder-btn');
+          
+          if (jacket.clearance > 0) {
+            if (jktStatus) {
+              jktStatus.className = "flex items-center justify-between py-2 px-3 rounded-xl bg-acid/15 border border-acid/30 text-acid text-xs font-mono font-bold mb-5";
+              jktStatus.innerHTML = `<div class="flex items-center gap-2"><span class="pulse-beacon-acid"></span><span>15% CLEARANCE ACTIVE</span></div><span>PROMO LIVE</span>`;
+            }
+            if (jktPrice) jktPrice.textContent = M.inr(jacket.value);
+            if (jktBtn) {
+              jktBtn.innerHTML = `<span class="material-symbols-outlined text-base">check_circle</span><span>15% Clearance Running</span>`;
+              jktBtn.classList.remove('btn-acid');
+              jktBtn.classList.add('bg-acid/20', 'text-acid', 'border', 'border-acid/40');
+            }
+          }
+          if (jacket.locked && jktLockBtn) {
+            jktLockBtn.innerHTML = `<span class="material-symbols-outlined text-base">lock</span><span>Reorders Locked 🔒</span>`;
+            jktLockBtn.classList.add('border-acid/50', 'text-acid');
+          }
+        }
+      }
+
+      // Render SKU Matrix Cards
+      function renderCatalog() {
+        const list = M.catalog(actions);
+        const filtered = list.filter(sku => {
+          // Channel check
+          if (currentChannel !== "all" && !(sku.channels[currentChannel] > 0)) return false;
+          // Status check
+          if (currentStatus === "dead" && sku.status !== "dead") return false;
+          if (currentStatus === "risk" && sku.status !== "risk") return false;
+          if (currentStatus === "low" && (sku.status !== "low" && sku.status !== "critical")) return false;
+          if (currentStatus === "healthy" && sku.status !== "healthy") return false;
+          // Search check
+          if (searchQuery) {
+            const q = searchQuery.toLowerCase();
+            const text = (sku.id + " " + sku.name + " " + sku.cat + " " + sku.supplier).toLowerCase();
+            if (!text.includes(q)) return false;
+          }
+          return true;
+        });
+
+        const totalPages = Math.max(1, Math.ceil(filtered.length / pageSize));
+        if (currentPage > totalPages) currentPage = totalPages;
+
+        const startIdx = (currentPage - 1) * pageSize;
+        const pageItems = filtered.slice(startIdx, startIdx + pageSize);
+
+        const container = document.getElementById('sku-grid-container');
+        if (!container) return;
+
+        if (pageItems.length === 0) {
+          container.innerHTML = `
+            <div class="col-span-full py-16 text-center text-stucco font-mono text-sm">
+              <span class="material-symbols-outlined text-4xl mb-2 text-white/30">search_off</span>
+              <p>No inventory items found matching your filters.</p>
+            </div>
+          `;
+          return;
+        }
+
+        container.innerHTML = pageItems.map(sku => {
+          const isDead = sku.status === "dead";
+          const isRisk = sku.status === "risk";
+          const isLow = sku.status === "low" || sku.status === "critical";
+          const glowClass = isDead ? "card-glow-risk" : (isLow ? "card-glow-acid" : "");
+          
+          let statusBadge = "";
+          if (isDead) {
+            statusBadge = `<span class="px-2 py-0.5 rounded bg-crimson/15 text-crimson font-mono text-[10px] font-bold border border-crimson/30">DEAD STOCK</span>`;
+          } else if (isRisk) {
+            statusBadge = `<span class="px-2 py-0.5 rounded bg-amber/15 text-amber font-mono text-[10px] font-bold border border-amber/30">SLOW RISK</span>`;
+          } else if (isLow) {
+            statusBadge = `<span class="px-2 py-0.5 rounded bg-acid/15 text-acid font-mono text-[10px] font-bold border border-acid/30">LOW STOCK</span>`;
+          } else {
+            statusBadge = `<span class="px-2 py-0.5 rounded bg-emerald/15 text-emerald font-mono text-[10px] font-bold border border-emerald/30">HEALTHY</span>`;
+          }
+
+          return `
+            <div class="glass-card-dark ${glowClass} p-5 rounded-3xl flex flex-col justify-between group cursor-pointer hover:border-white/30 transition-all" data-sku-id="${sku.id}">
+              <div>
+                <div class="flex items-start justify-between gap-3 mb-3">
+                  <div class="flex items-center gap-3">
+                    <img src="${sku.img || 'img/jacket.jpg'}" alt="${sku.name}" class="w-12 h-12 rounded-xl object-cover border border-white/10 group-hover:scale-105 transition-transform">
+                    <div>
+                      <span class="font-mono text-[10px] text-acid font-bold tracking-wider">#${sku.id}</span>
+                      <h4 class="font-display font-bold text-sm text-white line-clamp-1">${sku.name}</h4>
+                      <span class="text-[11px] text-stucco line-clamp-1">${sku.cat} • ${sku.supplier}</span>
+                    </div>
+                  </div>
+                  ${statusBadge}
+                </div>
+
+                <div class="grid grid-cols-2 gap-2 my-3 p-3 rounded-2xl bg-white/[0.03] border border-white/5 font-mono text-xs">
+                  <div>
+                    <span class="text-[10px] text-stucco block">Stock On Hand</span>
+                    <span class="font-bold text-white">${sku.units} units</span>
+                  </div>
+                  <div>
+                    <span class="text-[10px] text-stucco block">Velocity</span>
+                    <span class="font-bold text-white">${sku.vel.toFixed(1)}/wk</span>
+                  </div>
+                  <div>
+                    <span class="text-[10px] text-stucco block">Capital Value</span>
+                    <span class="font-bold ${isDead ? 'text-crimson' : 'text-white'}">${M.inr(sku.value)}</span>
+                  </div>
+                  <div>
+                    <span class="text-[10px] text-stucco block">Runway</span>
+                    <span class="font-bold ${isLow ? 'text-amber' : 'text-white'}">${sku.days.toFixed(0)} days</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="pt-3 border-t border-white/10 flex items-center justify-between text-xs font-mono">
+                <span class="text-stucco text-[11px]">${sku.clearance ? (sku.clearance * 100) + '% Off Live' : 'MRP ' + M.inr(sku.price)}</span>
+                <button class="px-3 py-1.5 rounded-xl bg-white/10 hover:bg-acid hover:text-obsidian text-white font-bold transition-colors flex items-center gap-1 open-drawer-btn" data-sku="${sku.id}">
+                  <span>Inspect</span>
+                  <span class="material-symbols-outlined text-xs">arrow_forward</span>
+                </button>
+              </div>
+            </div>
+          `;
+        }).join("");
+
+        // Update Pagination Controls
+        const paginationStatus = document.getElementById('pagination-status');
+        const pageNum = document.getElementById('page-num-display');
+        const prevBtn = document.getElementById('prev-page-btn');
+        const nextBtn = document.getElementById('next-page-btn');
+
+        if (paginationStatus) paginationStatus.textContent = `Showing ${startIdx + 1}–${Math.min(filtered.length, startIdx + pageSize)} of ${filtered.length} SKUs`;
+        if (pageNum) pageNum.textContent = `${currentPage} / ${totalPages}`;
+        if (prevBtn) prevBtn.disabled = currentPage <= 1;
+        if (nextBtn) nextBtn.disabled = currentPage >= totalPages;
+
+        // Attach Card Click Handlers
+        container.querySelectorAll('[data-sku-id]').forEach(card => {
+          card.addEventListener('click', (e) => {
+            if (e.target.closest('.open-drawer-btn')) return;
+            openDrawer(card.getAttribute('data-sku-id'));
+          });
+        });
+        container.querySelectorAll('.open-drawer-btn').forEach(btn => {
+          btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            openDrawer(btn.getAttribute('data-sku'));
+          });
+        });
+      }
+
+      // Drawer Open/Close Logic
+      function openDrawer(skuId) {
+        const list = M.catalog(actions);
+        const sku = list.find(s => s.id === skuId);
+        if (!sku) return;
+        activeDrawerSku = sku;
+
+        const drawer = document.getElementById('sku-drawer');
+        const drawerPanel = drawer.querySelector('.drawer-panel');
+
+        document.getElementById('d-sku-code').textContent = `#${sku.id}`;
+        document.getElementById('d-sku-cat').textContent = sku.cat;
+        document.getElementById('d-sku-name').textContent = sku.name;
+        document.getElementById('d-sku-supplier').textContent = `${sku.supplier} ${sku.phone ? '• ' + sku.phone : ''}`;
+        document.getElementById('d-sku-img').src = sku.img || 'img/jacket.jpg';
+        document.getElementById('d-sku-units').textContent = `${sku.units} Units`;
+        document.getElementById('d-sku-value').textContent = M.inr(sku.value);
+        document.getElementById('d-sku-price').textContent = M.inr(sku.price);
+        document.getElementById('d-sku-velocity').textContent = `${sku.vel.toFixed(1)} pairs/wk`;
+
+        document.getElementById('d-channel-shopify').textContent = `${sku.channels.shopify || 0} units`;
+        document.getElementById('d-channel-pos').textContent = `${sku.channels.pos || 0} units`;
+        document.getElementById('d-channel-warehouse').textContent = `${sku.channels.warehouse || 0} units`;
+
+        const pill = document.getElementById('d-sku-status-pill');
+        if (sku.status === 'dead') {
+          pill.className = "mt-2 inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-mono font-bold bg-crimson/15 text-crimson border border-crimson/30";
+          pill.textContent = "DEAD STOCK (>60 DAYS)";
+        } else if (sku.status === 'risk') {
+          pill.className = "mt-2 inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-mono font-bold bg-amber/15 text-amber border border-amber/30";
+          pill.textContent = "SLOW MOVING RISK";
+        } else if (sku.status === 'low' || sku.status === 'critical') {
+          pill.className = "mt-2 inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-mono font-bold bg-acid/15 text-acid border border-acid/30";
+          pill.textContent = `STOCKOUT IN ${sku.days.toFixed(0)} DAYS`;
+        } else {
+          pill.className = "mt-2 inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-mono font-bold bg-emerald/15 text-emerald border border-emerald/30";
+          pill.textContent = "HEALTHY VELOCITY";
+        }
+
+        // AI Note
+        const aiNote = document.getElementById('d-sku-ai-note');
+        if (sku.status === 'dead' || sku.status === 'risk') {
+          aiNote.innerHTML = `Stock has remained inactive for <strong>${sku.age} days</strong>. An immediate <strong>15% clearance promotion</strong> will accelerate sell-through by 3.2x, freeing up <strong>${M.inr(Math.round(sku.value * 0.85))}</strong> in liquid cash.`;
+        } else if (sku.status === 'low' || sku.status === 'critical') {
+          aiNote.innerHTML = `Coverage runway is only <strong>${sku.days.toFixed(1)} days</strong>. Recommended batch replenishment: <strong>${Math.max(sku.moq || 20, Math.ceil(sku.vel * 30 - sku.units))} units</strong> from ${sku.supplier}.`;
+        } else {
+          aiNote.innerHTML = `Cadence is balanced. Stock covers approximately <strong>${sku.days.toFixed(0)} days</strong>. No aggressive price action required.`;
+        }
+
+        drawer.classList.remove('pointer-events-none', 'opacity-0');
+        drawerPanel.classList.remove('translate-x-full');
+      }
+
+      function closeDrawer() {
+        const drawer = document.getElementById('sku-drawer');
+        const drawerPanel = drawer.querySelector('.drawer-panel');
+        drawer.classList.add('opacity-0', 'pointer-events-none');
+        drawerPanel.classList.add('translate-x-full');
+        activeDrawerSku = null;
+      }
+
+      document.getElementById('drawer-close-btn').addEventListener('click', closeDrawer);
+      document.querySelector('.drawer-backdrop').addEventListener('click', closeDrawer);
+
+      // Drawer Actions
+      document.getElementById('d-action-clearance-btn').addEventListener('click', () => {
+        if (!activeDrawerSku) return;
+        actions.clearance[activeDrawerSku.id] = 0.15;
+        persist();
+        updateKPIs();
+        renderCatalog();
+        HapticAudio.success();
+        fireConfetti();
+        showToast(`⚡ 15% Clearance Promo activated for #${activeDrawerSku.id}!`, "bolt");
+        closeDrawer();
+      });
+
+      document.getElementById('d-action-reorder-btn').addEventListener('click', () => {
+        if (!activeDrawerSku) return;
+        const note = M.orderNote(activeDrawerSku);
+        if (navigator.clipboard) navigator.clipboard.writeText(note);
+        HapticAudio.click(1400);
+        showToast(`📋 Supplier PO Note copied to clipboard for ${activeDrawerSku.supplier}`, "content_copy");
+        closeDrawer();
+      });
+
+      // Card 1 1-Tap Handlers (#JKT-409)
+      const jktPromoBtn = document.getElementById('jkt-apply-promo-btn');
+      if (jktPromoBtn) {
+        jktPromoBtn.addEventListener('click', () => {
+          actions.clearance["JKT-409"] = 0.15;
+          persist();
+          updateKPIs();
+          renderCatalog();
+          HapticAudio.success();
+          fireConfetti();
+          showToast("⚡ 15% Clearance Promo activated for #JKT-409 across Shopify & POS! ₹31,000 in recovery.", "bolt");
+        });
+      }
+
+      const jktLockBtn = document.getElementById('jkt-lock-reorder-btn');
+      if (jktLockBtn) {
+        jktLockBtn.addEventListener('click', () => {
+          actions.locked["JKT-409"] = true;
+          persist();
+          updateKPIs();
+          renderCatalog();
+          HapticAudio.click(800);
+          showToast("🔒 Reorders locked for Nordic Wear Ltd. Automatic PO halted.", "lock");
+        });
+      }
+
+      // Card 2 Handlers (#SH-102)
+      const shReorderBtn = document.getElementById('sh-reorder-btn');
+      if (shReorderBtn) {
+        shReorderBtn.addEventListener('click', () => {
+          const list = M.catalog(actions);
+          const sh = list.find(s => s.id === "SH-102");
+          const note = M.orderNote(sh);
+          if (navigator.clipboard) navigator.clipboard.writeText(note);
+          HapticAudio.success();
+          fireConfetti();
+          showToast("⚡ 1-Tap Reorder Drafted! PO note copied for Apex Footwear (+91 98201 44821)", "shopping_cart_checkout");
+        });
+      }
+
+      const shCopyBtn = document.getElementById('sh-copy-note-btn');
+      if (shCopyBtn) {
+        shCopyBtn.addEventListener('click', () => {
+          const list = M.catalog(actions);
+          const sh = list.find(s => s.id === "SH-102");
+          const note = M.orderNote(sh);
+          if (navigator.clipboard) navigator.clipboard.writeText(note);
+          HapticAudio.click(1200);
+          showToast("📋 Supplier WhatsApp note copied to clipboard!", "content_copy");
+        });
+      }
+
+      // Card 3 Bundle Handler (#ACC-091)
+      const accBundleBtn = document.getElementById('acc-bundle-btn');
+      if (accBundleBtn) {
+        accBundleBtn.addEventListener('click', () => {
+          actions.clearance["ACC-091"] = 0.15;
+          actions.clearance["JKT-409"] = 0.15;
+          persist();
+          updateKPIs();
+          renderCatalog();
+          HapticAudio.success();
+          fireConfetti();
+          showToast("⚡ Outerwear & Scarf Bundle Promo Activated! +₹14,200 liquidity targeted.", "join_inner");
+        });
+      }
+
+      // Working Capital Liquidity Simulator Range Logic
+      const simRange = document.getElementById('sim-discount-range');
+      const simBadge = document.getElementById('sim-discount-badge');
+      const simCash = document.getElementById('sim-cash-recovered');
+      const simVel = document.getElementById('sim-velocity-mult');
+      const simDays = document.getElementById('sim-days-to-clear');
+
+      if (simRange) {
+        simRange.addEventListener('input', (e) => {
+          const val = parseInt(e.target.value, 10);
+          simBadge.textContent = `${val}%`;
+          
+          const multiplier = 1 + (val / 100) * 8.5;
+          const recovered = Math.round(56200 * (val / 20));
+          const days = Math.max(12, Math.round(63 / (1 + val * 0.12)));
+
+          simCash.textContent = M.inr(recovered);
+          simVel.textContent = `${multiplier.toFixed(2)}x`;
+          simDays.textContent = `${days} Days`;
+        });
+      }
+
+      const simExecuteBtn = document.getElementById('sim-execute-all-btn');
+      if (simExecuteBtn) {
+        simExecuteBtn.addEventListener('click', () => {
+          const list = M.catalog(actions);
+          const deadOrRisk = list.filter(s => s.status === 'dead' || s.status === 'risk');
+          deadOrRisk.forEach(s => {
+            actions.clearance[s.id] = (parseInt(simRange.value, 10) || 15) / 100;
+          });
+          persist();
+          updateKPIs();
+          renderCatalog();
+          HapticAudio.success();
+          fireConfetti();
+          showToast(`⚡ Multi-SKU clearance executed across ${deadOrRisk.length} items!`, "bolt");
+        });
+      }
+
+      // Channel Selector Pills
+      document.querySelectorAll('.terminal-channel-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.terminal-channel-btn').forEach(b => {
+            b.className = "terminal-channel-btn px-4 py-2 rounded-xl text-xs font-mono transition-all text-stucco hover:text-white";
+          });
+          btn.className = "terminal-channel-btn px-4 py-2 rounded-xl text-xs font-mono font-bold transition-all bg-acid text-obsidian shadow-lg";
+          currentChannel = btn.getAttribute('data-channel');
+          currentPage = 1;
+          updateKPIs();
+          renderCatalog();
+        });
+      });
+
+      // Status Filter Chips
+      document.querySelectorAll('.status-chip').forEach(chip => {
+        chip.addEventListener('click', () => {
+          document.querySelectorAll('.status-chip').forEach(c => {
+            c.className = "status-chip px-3.5 py-1.5 rounded-xl font-mono text-xs text-stucco hover:text-white bg-white/5";
+          });
+          chip.className = "status-chip px-3.5 py-1.5 rounded-xl font-mono text-xs font-semibold bg-acid text-obsidian";
+          currentStatus = chip.getAttribute('data-status');
+          currentPage = 1;
+          renderCatalog();
+        });
+      });
+
+      // Search Input
+      const searchInput = document.getElementById('sku-search-input');
+      if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+          searchQuery = e.target.value.trim();
+          currentPage = 1;
+          renderCatalog();
+        });
+      }
+
+      // Pagination Handlers
+      document.getElementById('prev-page-btn').addEventListener('click', () => {
+        if (currentPage > 1) {
+          currentPage--;
+          renderCatalog();
+        }
+      });
+      document.getElementById('next-page-btn').addEventListener('click', () => {
+        currentPage++;
+        renderCatalog();
+      });
+
+      // Initial Execution
+      updateKPIs();
+      renderCatalog();
+
+    })();
+  </script>
+
+</body>
+</html>

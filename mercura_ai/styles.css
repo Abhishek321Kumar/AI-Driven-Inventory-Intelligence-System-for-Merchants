@@ -1,0 +1,213 @@
+/* ==========================================================================
+   MERCURA AI — 4K EDITORIAL FINTECH STYLES
+   Taste Skill v2.0 Architecture
+   ========================================================================== */
+
+:root {
+  --bg-light: #F4F3EF;
+  --bg-dark: #0D0D0D;
+  --stucco: #9E9A90;
+  --acid: #E8FF00;
+  --acid-hover: #D4FF00;
+  --crimson: #FF331F;
+  --emerald: #00C853;
+  --amber: #FF9900;
+  --ink-primary: #0D0D0D;
+  --ink-secondary: #5A5752;
+  --border-glass: rgba(255, 255, 255, 0.12);
+  --shadow-specular: inset 0 1px 1px rgba(255, 255, 255, 0.25), 0 20px 50px rgba(0, 0, 0, 0.5);
+  --side: 260px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: var(--bg-light);
+  color: var(--ink-primary);
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Glassmorphism Classes */
+.glass-panel-dark {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid var(--border-glass);
+  box-shadow: var(--shadow-specular);
+}
+
+.glass-panel-light {
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  border: 1px solid rgba(13, 13, 13, 0.09);
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05), inset 0 1px 1px rgba(255, 255, 255, 0.9);
+}
+
+/* Tabular Numerics */
+.tabular-data {
+  font-family: 'JetBrains Mono', monospace;
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1, "zero" 1;
+}
+
+/* Editorial Serif & Grotesk Mix */
+.editorial-hero {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 0.92;
+}
+
+/* Side Navigation Bar for Standalone Pages */
+.mx-side {
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100vh;
+  width: 16.5rem;
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  background: #0D0D0D;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  color: #FFFFFF;
+}
+
+.mx-brand {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  padding: 22px 20px 14px;
+  text-decoration: none;
+}
+
+.mx-brand img {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  object-fit: cover;
+  box-shadow: 0 0 16px rgba(232, 255, 0, 0.25);
+  border: 1px solid rgba(232, 255, 0, 0.4);
+}
+
+.mx-brand strong {
+  display: block;
+  font-family: 'Syne', sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: #FFFFFF;
+}
+
+.mx-brand span {
+  display: block;
+  font-size: 11px;
+  color: #9E9A90;
+  letter-spacing: 0.02em;
+}
+
+.mx-nav {
+  flex: 1;
+  padding: 10px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  overflow-y: auto;
+}
+
+.mx-label {
+  margin: 16px 10px 6px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #9E9A90;
+}
+
+.mx-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  color: #9E9A90;
+  text-decoration: none;
+  font-size: 13.5px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.mx-link:hover {
+  background: rgba(255, 255, 255, 0.06);
+  color: #FFFFFF;
+}
+
+.mx-link.on {
+  background: rgba(232, 255, 0, 0.12);
+  color: #E8FF00;
+  border: 1px solid rgba(232, 255, 0, 0.25);
+}
+
+.mx-link small {
+  display: block;
+  font-size: 11px;
+  font-weight: 400;
+  opacity: 0.7;
+}
+
+.mx-link .badge {
+  margin-left: auto;
+  background: #FF331F;
+  color: #FFFFFF;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 7px;
+}
+
+.mx-merchant {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 18px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  text-decoration: none;
+  color: #FFFFFF;
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.mx-merchant img {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.mx-merchant b {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.mx-merchant span {
+  display: block;
+  font-size: 11px;
+  color: #9E9A90;
+}
+
+.mx-pro {
+  margin-left: auto;
+  background: #E8FF00;
+  color: #0D0D0D;
+  font-size: 10px;
+  font-weight: 800;
+  padding: 2px 6px;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
